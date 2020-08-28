@@ -48,6 +48,9 @@
     //Contenido
     include "modulos/contenido.php";
 
+    //Footer
+    include "modulos/footer.php";
+
   ?>
 
 </div>
