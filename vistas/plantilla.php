@@ -40,7 +40,14 @@
 <div class="wrapper">
 
   <?php 
+    //CABEZOTE
     include "modulos/cabezote.php";
+    //MENU
+    include "modulos/menu.php";
+
+    //Contenido
+    include "modulos/contenido.php";
+    
   ?>
 
 </div>
