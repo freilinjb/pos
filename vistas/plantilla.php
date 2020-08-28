@@ -51,7 +51,7 @@
     include "modulos/menu.php";
 
     //Contenido
-    include "modulos/contenido.php";
+    include "modulos/inicio.php";
 
     //Footer
     include "modulos/footer.php";
