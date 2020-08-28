@@ -17,7 +17,7 @@
 
             <li>
                 <a href="categorias">
-                    <i class="fa fa-th"></i>
+                    <i class="fa fa-th "></i>
                     <span>Categorias</span>
                 </a>
             </li>
