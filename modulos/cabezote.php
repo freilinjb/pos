@@ -30,11 +30,17 @@
                         <img src="vistas/img/usuarios/default/anonymous.png " class="user-image" alt="User Image">
                         <span class="hidden-xs">Usuario Administrador</span>
                     </a>
+                    <!-- Dropdown-toggle -->
+                    <ul class="dropdown-menu">
+                        <li class="user-body">
+                            <div class="pull-right">
+                                <a href="" class="btn btn-default btn-flat">Salir</a>
+                            </div>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
-        <!-- Dropdown-toggle -->
-        
     </nav>
 
 </header>
