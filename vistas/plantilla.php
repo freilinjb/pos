@@ -63,6 +63,8 @@
       $_GET['ruta'] == 'reportes') {
         include "modulos/".$_GET['ruta'].".php";
 
+      } else {
+        include "modulos/404.php";
       }
     }
 
