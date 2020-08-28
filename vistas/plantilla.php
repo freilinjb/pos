@@ -47,7 +47,7 @@
 
     //Contenido
     include "modulos/contenido.php";
-    
+
   ?>
 
 </div>
