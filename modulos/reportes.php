@@ -8,7 +8,7 @@
             <small>Panel de control</small>
 
         </h1>
-        
+
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
             <li class="active">Reportes de ventas</li>
@@ -16,7 +16,7 @@
 
     </section>
 
-    <!-- Main content --> 
+    <!-- Main content -->
     <section class="content">
 
         <!-- Default box -->
