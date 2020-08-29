@@ -33,12 +33,14 @@
                 <!-- /.col -->
             </div>
 
-            <?php
-                $login = new ControladorUsuarios();
-                $login->ctrIngresoUsuario();
-            ?>
         </form>
     </div>
     <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
+
+<?php
+
+$login = new ControladorUsuarios();
+$login->ctrIngresoUsuario();
+?>
