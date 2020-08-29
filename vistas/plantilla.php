@@ -66,6 +66,9 @@
       } else {
         include "modulos/404.php";
       }
+    } else {
+      // include "modulos/404.php";
+      header("Location: index.php?ruta=inicio");
     }
 
     //Footer
