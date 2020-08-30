@@ -26,7 +26,7 @@
             </div>
 
             <div class="box-body">
-                <table class="table table-border table-striped">
+                <table class="table table-border table-striped tablas">
                     <thead>
                         <tr>
                             <th>#</th>
