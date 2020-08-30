@@ -22,14 +22,13 @@ class ControladorUsuarios{
 
 				if($respuesta["usuario"] == $_POST["ingUsuario"] && $respuesta["password"] == $_POST["ingPassword"]){
 
-					// $_SESSION["iniciarSesion"] = "ok";
+					$_SESSION["iniciarSesion"] = "ok";
 
-					// echo '<script>
+					echo '<script>
 
-					// 	window.location = "inicio";
+						window.location = "inicio";
 
-					// </script>';
-					echo '<br><div class="alert alert-success">Bienvenido al sistema</div>';
+					</script>';
 
 				}else{
 
