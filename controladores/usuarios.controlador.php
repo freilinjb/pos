@@ -47,12 +47,48 @@ class ControladorUsuarios
 		var_dump($_POST);
 
 		if (isset($_POST['nuevoUsuario'])) {
-			if (
-				preg_match('/^[a-zA-Z0-9ñÑaeiouÁÉÍÓÚ ]+$/', $_POST['nuevoNombre']) &&
-				preg_match('/^[a-zA-Z0-9ñÑaeiouÁÉÍÓÚ ]+$/', $_POST['nuevoUsuario']) &&
-				preg_match('/^[a-zA-Z0-9ñÑaeiouÁÉÍÓÚ ]+$/', $_POST['nuevoPassword'])
-			) {
-			} else {
+
+			if(isset($_POST['nuevoUsuario'])){
+
+
+				$tabla = "usuarios";
+
+				$datos = array("nombre"=> $_POST['nuevoNombre'],
+								"usuario"=> $_POST['nuevoUsuario'],
+								"password"=> $_POST['nuevoPassword'],
+								"perfil"=> $_POST['nuevoPerfil']);
+
+				var_dump($datos);
+				#Enviar los datos al modelo
+				$respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
+
+				if($respuesta == "ok") {
+					echo '<script>
+
+					swal({
+
+						type: "success",
+						title: "¡El usuario ha sido guardado correctamente!",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar",
+						closeOnConfirm: false
+
+					}).then(function(result){
+
+						if(result.value){
+						
+							// window.location = "usuarios";
+
+						}
+
+					});
+				
+
+				</script>';
+				}
+
+			} 
+			else {
 				echo '<script>
 
 					swal({
@@ -66,7 +102,7 @@ class ControladorUsuarios
 
 						if(result.value){
 						
-							window.location = "usuarios";
+							// window.location = "usuarios";
 
 						}
 
@@ -75,6 +111,7 @@ class ControladorUsuarios
 
 				</script>';
 			}
+			$_POST = null;
 		}
 	}
 }
