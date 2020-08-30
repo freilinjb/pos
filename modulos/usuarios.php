@@ -26,7 +26,7 @@
             </div>
 
             <div class="box-body">
-                <table class="table table-border table-striped tablas">
+                <table class="table table-border table-striped tablas dt-responsive">
                     <thead>
                         <tr>
                             <th>#</th>
