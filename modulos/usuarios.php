@@ -63,7 +63,7 @@
                             <td>2</td>
                             <td>Usuario Administrador</td>
                             <td>Administrador</td>
-                            <td><img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="40px" alt="Foto"></td>
+                            <td><img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail previsualizar" width="40px" alt="Foto"></td>
                             <td>Administrador</td>
                             <td>
                                 <button class="btn btn-success btn-xs">Activado</button>
