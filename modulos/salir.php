@@ -2,6 +2,6 @@
     session_destroy();
 
     echo '<script>
-        window.location = "inicio"
+        window.location = "index.php?ruta=inicio";
     </script>'
 ?>

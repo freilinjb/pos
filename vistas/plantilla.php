@@ -111,7 +111,6 @@ CUERPO DOCUMENTO
          $_GET["ruta"] == "salir"){
 
         include "modulos/".$_GET["ruta"].".php";
-
       }else{
 
         include "modulos/404.php";
@@ -141,6 +140,8 @@ CUERPO DOCUMENTO
   ?>
 
 
-<script src="vistas/js/plantilla.js"></script>
+  <script src="vistas/js/plantilla.js"></script>
+  <script src="vistas/js/usuarios.js"></script>
+
 </body>
 </html>
