@@ -100,7 +100,7 @@ MODAL AGREGAR USUARIO
 
     <div class="modal-content">
 
-      <form role="form" method="post" enctype="multipart/form-data">
+      <form role="form" action="controladores/usuarios.controlador.php" method="post" enctype="multipart/form-data">
 
         <!--=====================================
         CABEZA DEL MODAL
@@ -214,14 +214,14 @@ MODAL AGREGAR USUARIO
 
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
 
-          <button type="submit" class="btn btn-primary">Guardar usuario</button>
+          <button type="submit" name="submit" class="btn btn-primary">Guardar usuario</button>
 
         </div>
 
         <?php
 
-          $crearUsuario = new ControladorUsuarios();
-          $crearUsuario -> ctrCrearUsuario();
+          // $crearUsuario = new ControladorUsuarios();
+          // $crearUsuario -> ctrCrearUsuario();
 
         ?>
 

@@ -25,7 +25,7 @@ class ModeloUsuarios{
 
 
 	static public function mdlIngresarUsuario($tabla, $datos) {
-		
+
 		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre, usuario, password, perfil) VALUES(:nombre, :usuario, :password, :perfil)");
 
 		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
