@@ -44,11 +44,17 @@ class ControladorUsuarios
 	//Regustri de usuario
 	static public function ctrCrearUsuario()
 	{
-		var_dump($_POST);
+		// var_dump($_POST);
 
 		if (isset($_POST['nuevoUsuario'])) {
 
 			if(isset($_POST['nuevoUsuario'])){
+
+				//VALIDAR IMAGEN
+				if(isset($_FILES['nuevaFoto']['tmp_name'])) {
+					var_dump($_FILES['nuevaFoto']['tmp_name']);
+
+				}
 
 
 				$tabla = "usuarios";
@@ -58,34 +64,34 @@ class ControladorUsuarios
 								"password"=> $_POST['nuevoPassword'],
 								"perfil"=> $_POST['nuevoPerfil']);
 
-				var_dump($datos);
+				// var_dump($datos);
 				#Enviar los datos al modelo
 				$respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
 
-				if($respuesta == "ok") {
-					echo '<script>
+				// if($respuesta == "ok") {
+				// 	echo '<script>
 
-					swal({
+				// 	swal({
 
-						type: "success",
-						title: "¡El usuario ha sido guardado correctamente!",
-						showConfirmButton: true,
-						confirmButtonText: "Cerrar",
-						closeOnConfirm: false
+				// 		type: "success",
+				// 		title: "¡El usuario ha sido guardado correctamente!",
+				// 		showConfirmButton: true,
+				// 		confirmButtonText: "Cerrar",
+				// 		closeOnConfirm: false
 
-					}).then(function(result){
+				// 	}).then(function(result){
 
-						if(result.value){
+				// 		if(result.value){
 						
-							// window.location = "usuarios";
+				// 			// window.location = "usuarios";
 
-						}
+				// 		}
 
-					});
+				// 	});
 				
 
-				</script>';
-				}
+				// </script>';
+				// }
 
 			} 
 			else {

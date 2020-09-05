@@ -33,7 +33,7 @@ class ModeloUsuarios{
 		$stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
 		$stmt->bindParam(":perfil", $datos["perfil"], PDO::PARAM_STR);
 
-		var_dump($stmt);
+		// var_dump($stmt);
 
 		if($stmt->execute()) {
 

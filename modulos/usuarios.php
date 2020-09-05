@@ -80,12 +80,7 @@
                     </tbody>
                 </table>
             </div>
-
-            <div class="box-footer">
-                Footer
-            </div>
         </div>
-
     </section>
 </div>
 
@@ -100,7 +95,7 @@ MODAL AGREGAR USUARIO
 
     <div class="modal-content">
 
-      <form role="form" action="controladores/usuarios.controlador.php" method="post" enctype="multipart/form-data">
+      <form role="form" method="post" enctype="multipart/form-data">
 
         <!--=====================================
         CABEZA DEL MODAL
@@ -220,8 +215,8 @@ MODAL AGREGAR USUARIO
 
         <?php
 
-          // $crearUsuario = new ControladorUsuarios();
-          // $crearUsuario -> ctrCrearUsuario();
+           $crearUsuario = new ControladorUsuarios();
+           $crearUsuario -> ctrCrearUsuario();
 
         ?>
 
