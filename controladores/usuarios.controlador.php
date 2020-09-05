@@ -52,7 +52,11 @@ class ControladorUsuarios
 
 				//VALIDAR IMAGEN
 				if(isset($_FILES['nuevaFoto']['tmp_name'])) {
-					var_dump($_FILES['nuevaFoto']['tmp_name']);
+					//Crear nuevo array
+					list($ancho, $alto) = getimagesize($_FILES['nuevaFoto']['tmp_name']);
+					
+					//Carga los datos de la imagen alto, ancho, etc = getimagesize
+					var_dump(getimagesize($_FILES['nuevaFoto']['tmp_name']));
 
 				}
 
