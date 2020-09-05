@@ -55,8 +55,14 @@ class ControladorUsuarios
 					//Crear nuevo array
 					list($ancho, $alto) = getimagesize($_FILES['nuevaFoto']['tmp_name']);
 					
-					//Carga los datos de la imagen alto, ancho, etc = getimagesize
-					var_dump(getimagesize($_FILES['nuevaFoto']['tmp_name']));
+					//Redimencionar
+					$nuevoAncho = 500;
+					$nuevoAlto = 500;
+
+					$directorio = 'vistas/img/usuarios/'.$_POST['nuevoUsuario'];
+					
+					//0755 permiso de lectura y estricura
+					mkdir($directorio, 0755);
 
 				}
 
