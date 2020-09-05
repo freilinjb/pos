@@ -59,7 +59,7 @@ class ControladorUsuarios
 					$nuevoAncho = 500;
 					$nuevoAlto = 500;
 
-					$ruta = "";
+					$foto = "";
 
 					$directorio = 'vistas/img/usuarios/'.$_POST['nuevoUsuario'];
 					
@@ -78,7 +78,7 @@ class ControladorUsuarios
 
 						  $aleatorio = mt_rand(100,999);
 
-						  $ruta = "vistas/img/usuarios/".$_POST["nuevoUsuario"]."/".$aleatorio.".jpg";
+						  $foto = "vistas/img/usuarios/".$_POST["nuevoUsuario"]."/".$aleatorio.".jpg";
   
 						  $origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);						
   
@@ -86,8 +86,26 @@ class ControladorUsuarios
   
 						  imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
   
-						  imagejpeg($destino, $ruta);
+						  imagejpeg($destino, $foto);
 					 }
+
+					 if($_FILES['nuevaFoto']['type'] == 'image/png') {
+						/**
+						 * Guardar la imagen em el directorio
+						 */
+
+						 $aleatorio = mt_rand(100,999);
+
+						 $foto = "vistas/img/usuarios/".$_POST["nuevoUsuario"]."/".$aleatorio.".png";
+ 
+						 $origen = imagecreatefrompng($_FILES["nuevaFoto"]["tmp_name"]);						
+ 
+						 $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+ 
+						 imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+ 
+						 imagepng($destino, $foto);
+					}
 
 				}
 
@@ -97,36 +115,37 @@ class ControladorUsuarios
 				$datos = array("nombre"=> $_POST['nuevoNombre'],
 								"usuario"=> $_POST['nuevoUsuario'],
 								"password"=> $_POST['nuevoPassword'],
-								"perfil"=> $_POST['nuevoPerfil']);
+								"perfil"=> $_POST['nuevoPerfil'],
+								"foto" => $foto);
 
 				// var_dump($datos);
 				#Enviar los datos al modelo
 				$respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
 
-				// if($respuesta == "ok") {
-				// 	echo '<script>
+				if($respuesta == "ok") {
+					echo '<script>
 
-				// 	swal({
+					swal({
 
-				// 		type: "success",
-				// 		title: "¡El usuario ha sido guardado correctamente!",
-				// 		showConfirmButton: true,
-				// 		confirmButtonText: "Cerrar",
-				// 		closeOnConfirm: false
+						type: "success",
+						title: "¡El usuario ha sido guardado correctamente!",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar",
+						closeOnConfirm: false
 
-				// 	}).then(function(result){
+					}).then(function(result){
 
-				// 		if(result.value){
+						if(result.value){
 						
-				// 			// window.location = "usuarios";
+							// window.location = "usuarios";
 
-				// 		}
+						}
 
-				// 	});
+					});
 				
 
-				// </script>';
-				// }
+				</script>';
+				}
 
 			} 
 			else {
