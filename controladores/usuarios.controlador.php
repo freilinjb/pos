@@ -59,10 +59,35 @@ class ControladorUsuarios
 					$nuevoAncho = 500;
 					$nuevoAlto = 500;
 
+					$ruta = "";
+
 					$directorio = 'vistas/img/usuarios/'.$_POST['nuevoUsuario'];
 					
 					//0755 permiso de lectura y estricura
 					mkdir($directorio, 0755);
+
+					/**
+					 * De acuerdo al tipo de imagen aplicamos las funciones por defecto
+					 * de PHP
+					 */
+
+					 if($_FILES['nuevaFoto']['type'] == 'image/jpeg') {
+						 /**
+						  * Guardar la imagen em el directorio
+						  */
+
+						  $aleatorio = mt_rand(100,999);
+
+						  $ruta = "vistas/img/usuarios/".$_POST["nuevoUsuario"]."/".$aleatorio.".jpg";
+  
+						  $origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);						
+  
+						  $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+  
+						  imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+  
+						  imagejpeg($destino, $ruta);
+					 }
 
 				}
 
