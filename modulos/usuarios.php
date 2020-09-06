@@ -41,6 +41,14 @@
                     </thead>
 
                     <tbody>
+                    <?php
+                      $item = null;
+                      $valor = null;
+
+                      $usuarios = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
+
+                      var_dump($usuarios);
+                    ?>
                         <tr>
                             <td>1</td>
                             <td>Usuario Administrador</td>
