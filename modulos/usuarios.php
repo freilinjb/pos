@@ -71,7 +71,7 @@
 
                             <td>
                                 <div class="btn-group">
-                                    <button class="btn btn-warning" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn btn-warning btnEditarUsuario" idUsuario="'.$value['id'].'" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-pencil"></i></button>
                                     <button class="btn btn-danger"><i class="fa fa-times"></i></button>
                                 </div>
                             </td>
@@ -231,7 +231,7 @@ MODAL AGREGAR USUARIO
 </div>
 
 <!--=====================================
-MODAL AGREGAR USUARIO
+MODAL EDITAR USUARIO
 ======================================-->
 
 <div id="modalEditarUsuario" class="modal fade" role="dialog">
@@ -284,7 +284,7 @@ MODAL AGREGAR USUARIO
               
                 <span class="input-group-addon"><i class="fa fa-key"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="editarUsuario" value="" id="nuevoUsuario" required>
+                <input type="text" class="form-control input-lg" name="editarUsuario" value="" id="editarUsuario" required>
 
               </div>
 

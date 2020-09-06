@@ -69,4 +69,14 @@ $(".nuevaFoto").change(function(){
         });
 
     }
-})
+});
+
+
+/**
+ * EDITAR USUARIO
+ */
+$('.btnEditarUsuario').click( function() {
+    //Captura el id del usuario al precionar click en el boton editar
+    const idUsuario = $(this).attr('idUsuario');
+    console.log('IdUsuario: ', idUsuario);
+});
