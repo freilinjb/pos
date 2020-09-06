@@ -270,7 +270,7 @@ MODAL EDITAR USUARIO
               
                 <span class="input-group-addon"><i class="fa fa-user"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="editarNombre" value="" required>
+                <input type="text" class="form-control input-lg" name="editarNombre" id="editarNombre" value="" required>
 
               </div>
 

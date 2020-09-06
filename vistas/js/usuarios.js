@@ -90,7 +90,11 @@ $('.btnEditarUsuario').click( function() {
         processData:false,
         dateType:'json',
         success: function(respuesta) {
-            console.log(respuesta);
+            respuesta = (JSON.parse(respuesta));
+            ;
+            $("#editarNombre").val(respuesta['nombre']);
+            $("#editarUsuario").val(respuesta['usuario']);
+            $("#editarPerfil").html(respuesta['perfil']);
         }
     });
 });
