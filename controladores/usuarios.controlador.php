@@ -198,10 +198,163 @@ class ControladorUsuarios
 	}
 
 	static public function ctrEditarUsuario() {
+
         if (isset($_POST['editarUsuario'])) {
 			if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"])) {
-				 
-            }
+				
+				//VALIDAR IMAGEN
+				$ruta = $_POST['fotoActual'];
+
+				if(isset($_FILES['editarFoto']['tmp_name'])) {
+					//Crear nuevo array
+					list($ancho, $alto) = getimagesize($_FILES['editarFoto']['tmp_name']);
+					
+					//Redimencionar
+					$nuevoAncho = 500;
+					$nuevoAlto = 500;
+
+					$foto = "";
+
+					$directorio = 'vistas/img/usuarios/'.$_POST['editarUsuario'];
+					
+					//PREGUNTAMOS SI EXISTE OTRA IMAGEN EN LA BD
+					if(!empty($_POST['fotoActual'])) {
+						//Elimina la foto que existe en el servidor
+						unlink($_POST['fotoActual']);
+					} else {
+						//Crea la carpeta del usuario
+						mkdir($directorio, 0755);
+					}
+
+					/**
+					 * De acuerdo al tipo de imagen aplicamos las funciones por defecto
+					 * de PHP
+					 */
+
+					 if($_FILES['editarFoto']['type'] == 'image/jpeg') {
+						 /**
+						  * Guardar la imagen em el directorio
+						  */
+
+						  $aleatorio = mt_rand(100,999);
+
+						  $foto = "vistas/img/usuarios/".$_POST["editarUsuario"]."/".$aleatorio.".jpg";
+  
+						  $origen = imagecreatefromjpeg($_FILES["editarFoto"]["tmp_name"]);						
+  
+						  $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+  
+						  imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+  
+						  imagejpeg($destino, $foto);
+					 }
+
+					 if($_FILES['editarFoto']['type'] == 'image/png') {
+						/**
+						 * Guardar la imagen em el directorio
+						 */
+
+						 $aleatorio = mt_rand(100,999);
+
+						 $foto = "vistas/img/usuarios/".$_POST["editarUsuario"]."/".$aleatorio.".png";
+ 
+						 $origen = imagecreatefrompng($_FILES["editarFoto"]["tmp_name"]);						
+ 
+						 $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+ 
+						 imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+ 
+						 imagepng($destino, $foto);
+					}
+
+				}
+				$tabla = "usuarios";
+
+				if($_POST['editarPassword'] != '') {
+
+					if(preg_match('/^[a-zA-Z0-9]+$/', $_POST['editarPassword'])) {
+						$encriptar = crypt($_POST["editarPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+
+					} else {
+						echo '<script>
+
+						swal({
+	
+							type: "error",
+							title: "¡La contraseña no puede ir vacía o llevar caracteres especiales!",
+							showConfirmButton: true,
+							confirmButtonText: "Cerrar"
+	
+						}).then(function(result){
+	
+							if(result.value){
+								window.location = "usuarios";
+							}
+	
+						});
+					
+	
+					</script>';
+					}
+				} else {
+					$encriptar = $_POST['passwordActual'];
+				}
+
+				$datos = array('nombre'=> $_POST['editarNombre'],
+							   'usuario'=> $_POST['editarUsuario'],
+							   'password'=> $encriptar,
+							   'perfil'=> $_POST['editarPerfil'],
+							   'foto'=> $ruta);
+
+				$respuesta = ModeloUsuarios::mdlEditarUsuario($tabla, $datos);
+
+				if($respuesta == 'ok') {
+					echo '<script>
+
+					swal({
+
+						type: "success",
+						title: "¡El usuario ha sido editado correctamente!",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar",
+						closeOnConfirm: false
+
+					}).then(function(result){
+
+						if(result.value){
+						
+							// window.location = "usuarios";
+
+						}
+
+					});
+				
+
+				</script>';
+				}
+            } else {
+				echo '<script>
+
+					swal({
+
+						type: "error",
+						title: "¡El nombre no puede ir vacío o llevar caracteres especiales!",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar"
+
+					}).then(function(result){
+
+						if(result.value){
+						
+							window.location = "usuarios";
+
+						}
+
+					});
+				
+
+				</script>';
+			}
         }
     }
 }
