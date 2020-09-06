@@ -284,7 +284,7 @@ MODAL EDITAR USUARIO
               
                 <span class="input-group-addon"><i class="fa fa-key"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="editarUsuario" value="" id="editarUsuario" required>
+                <input type="text" class="form-control input-lg" name="editarUsuario" value="" id="editarUsuario" readonly>
 
               </div>
 
@@ -299,7 +299,7 @@ MODAL EDITAR USUARIO
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span> 
 
                 <input type="password" class="form-control input-lg" name="editarPassword" placeholder="Escriba la nueva contraseña" required>
-
+                <input type="hidden" id="passwordActual" name="passwordActual">
               </div>
 
             </div>
@@ -339,7 +339,7 @@ MODAL EDITAR USUARIO
               <p class="help-block">Peso máximo de la foto 2MB</p>
 
               <img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
-
+              <input type="hidden" name="fotoActual" id="fotoActual">
             </div>
 
           </div>
@@ -358,12 +358,12 @@ MODAL EDITAR USUARIO
 
         </div>
 
-        <!-- <?php
+        <?php
 
-           $crearUsuario = new ControladorUsuarios();
-           $crearUsuario -> ctrCrearUsuario();
+           $editarUsuario = new ControladorUsuarios();
+           $editarUsuario -> ctrEditarUsuario();
 
-        ?> -->
+        ?>
 
       </form>
 

@@ -95,6 +95,14 @@ $('.btnEditarUsuario').click( function() {
             $("#editarNombre").val(respuesta['nombre']);
             $("#editarUsuario").val(respuesta['usuario']);
             $("#editarPerfil").html(respuesta['perfil']);
+            //Para que se mangenta en valor por si se va a modificar
+            $("#editarPerfil").val(respuesta['perfil']);
+
+            //Carga la foto y lo carga en el input:hidden 
+            //para guardarlo para modificarlo
+            $("#fotoActual").val(respuesta['foto']);
+
+            $("#passwordActual").val(respuesta['password']);
 
             if(respuesta['foto'] != '') {
                 $('.previsualizar').attr('src', respuesta['foto']);
