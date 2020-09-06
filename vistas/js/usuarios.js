@@ -64,8 +64,6 @@ $(".nuevaFoto").change(function(){
 
             const rutaImagen = event.target.result;
 
-            $('.previsualizar').attr("src", rutaImagen);
-
         });
 
     }
@@ -78,5 +76,21 @@ $(".nuevaFoto").change(function(){
 $('.btnEditarUsuario').click( function() {
     //Captura el id del usuario al precionar click en el boton editar
     const idUsuario = $(this).attr('idUsuario');
-    console.log('IdUsuario: ', idUsuario);
+    
+    let datos = new FormData();
+    //variables post
+    datos.append('idUsuario', idUsuario);
+
+    $.ajax({
+        url:'ajax/usuarios.ajax.php',
+        method:'POST',
+        data:datos,
+        cache: false,
+        contentType:false,
+        processData:false,
+        dateType:'json',
+        success: function(respuesta) {
+            console.log(respuesta);
+        }
+    });
 });
