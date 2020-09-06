@@ -19,17 +19,26 @@ class ControladorUsuarios
 
 				$encriptar = crypt($_POST["ingPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
 
-
 				$tabla = "usuarios";
 
 				$item = "usuario";
 				$valor = $_POST["ingUsuario"];
 
 				$respuesta = ModeloUsuarios::MdlMostrarUsuarios($tabla, $item, $valor);
+				echo "respuesta: ".strlen($respuesta['password']);
+				echo "encriptada: ".strlen($encriptar);
+				if($respuesta['password'] == $encriptar) {
+					echo 'iguales';
+				}
 
 				if ($respuesta["usuario"] == $_POST["ingUsuario"] && $respuesta["password"] == $_POST["ingPassword"]) {
 
 					$_SESSION["iniciarSesion"] = "ok";
+					$_SESSION["id"] = $respuesta['id'];
+					$_SESSION["nombre"] = $respuesta['nombre'];
+					$_SESSION["usuario"] = $respuesta['usuario'];
+					$_SESSION["foto"] = $respuesta['foto'];
+					$_SESSION["perfil"] = $respuesta['perfil'];
 
 					echo '<script>
 
