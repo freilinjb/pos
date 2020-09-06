@@ -95,6 +95,10 @@ $('.btnEditarUsuario').click( function() {
             $("#editarNombre").val(respuesta['nombre']);
             $("#editarUsuario").val(respuesta['usuario']);
             $("#editarPerfil").html(respuesta['perfil']);
+
+            if(respuesta['foto'] != '') {
+                $('.previsualizar').attr('src', respuesta['foto']);
+            }
         }
     });
 });
