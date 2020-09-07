@@ -200,20 +200,20 @@ class ControladorUsuarios
 	static public function ctrEditarUsuario() {
 
         if (isset($_POST['editarUsuario'])) {
+			
 			if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"])) {
 				
 				//VALIDAR IMAGEN
 				$ruta = $_POST['fotoActual'];
-
-				if(isset($_FILES['editarFoto']['tmp_name'])) {
+				
+				//Evitamos que nos borre el archivo si esta bacio
+				if(isset($_FILES['editarFoto']['tmp_name']) && !empty($_FILES['editarFoto']['tmp_name'])) {
 					//Crear nuevo array
 					list($ancho, $alto) = getimagesize($_FILES['editarFoto']['tmp_name']);
 					
 					//Redimencionar
 					$nuevoAncho = 500;
 					$nuevoAlto = 500;
-
-					$foto = "";
 
 					$directorio = 'vistas/img/usuarios/'.$_POST['editarUsuario'];
 					
@@ -238,7 +238,7 @@ class ControladorUsuarios
 
 						  $aleatorio = mt_rand(100,999);
 
-						  $foto = "vistas/img/usuarios/".$_POST["editarUsuario"]."/".$aleatorio.".jpg";
+						  $ruta = "vistas/img/usuarios/".$_POST["editarUsuario"]."/".$aleatorio.".jpg";
   
 						  $origen = imagecreatefromjpeg($_FILES["editarFoto"]["tmp_name"]);						
   
@@ -246,7 +246,7 @@ class ControladorUsuarios
   
 						  imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
   
-						  imagejpeg($destino, $foto);
+						  imagejpeg($destino, $ruta);
 					 }
 
 					 if($_FILES['editarFoto']['type'] == 'image/png') {
@@ -256,7 +256,7 @@ class ControladorUsuarios
 
 						 $aleatorio = mt_rand(100,999);
 
-						 $foto = "vistas/img/usuarios/".$_POST["editarUsuario"]."/".$aleatorio.".png";
+						 $ruta = "vistas/img/usuarios/".$_POST["editarUsuario"]."/".$aleatorio.".png";
  
 						 $origen = imagecreatefrompng($_FILES["editarFoto"]["tmp_name"]);						
  
@@ -264,7 +264,7 @@ class ControladorUsuarios
  
 						 imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
  
-						 imagepng($destino, $foto);
+						 imagepng($destino, $ruta);
 					}
 
 				}
@@ -305,6 +305,8 @@ class ControladorUsuarios
 							   'password'=> $encriptar,
 							   'perfil'=> $_POST['editarPerfil'],
 							   'foto'=> $ruta);
+			
+				var_dump($datos);
 
 				$respuesta = ModeloUsuarios::mdlEditarUsuario($tabla, $datos);
 
