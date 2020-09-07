@@ -156,6 +156,9 @@ $('.btnEditarUsuario').click( function() {
   */
 
   $('#nuevoUsuario').change(function() {
+    //Remueve el mensaje de alerta
+    $('.alert').remove();
+
       const usuario = $(this).val();
       let datos = new FormData();
       datos.append('validarUsuario', usuario);
@@ -168,7 +171,16 @@ $('.btnEditarUsuario').click( function() {
         contentType: false,
         processData: false,
         success: function( respuesta) {
-             console.log('respuesta: ', JSON.parse(respuesta));
+
+             if(respuesta != false) {
+                 respuesta = JSON.parse(respuesta);
+             }
+            if(respuesta) {
+                $('#nuevoUsuario').parent().after('<div class="alert alert-warning">Este usuario ya existe en la DB</div>');
+                // $('#nuevoUsuario').befone('<div class="alert alert-warning">Este usuario ya existe en la DB</div>');
+                $('#nuevoUsuario').val();
+
+            }
         }
     });
 
