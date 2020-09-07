@@ -47,9 +47,13 @@ if(isset($_POST['idUsuario'])) {
 }
 
 //ACTIVAR USUARIO
-if(isset($_POST['activarUsuario'])) {
-    $activarUsuario = new AjaxUsuarios();
-    $activarUsuario -> activarUsuario = $_POST['activarUsuario'];
-    $activarUsuario -> activarId = $_POST['activarId'];
-    $activarUsuario->ajaxActivarUsuario();
+
+if(isset($_POST["activarUsuario"])){
+
+	$activarUsuario = new AjaxUsuarios();
+	$activarUsuario -> activarUsuario = $_POST["activarUsuario"];
+	$activarUsuario -> activarId = $_POST["activarId"];
+	$activarUsuario -> ajaxActivarUsuario();
+
 }
+

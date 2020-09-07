@@ -75,9 +75,9 @@ $(".nuevaFoto").change(function(){
  */
 $('.btnEditarUsuario').click( function() {
     //Captura el id del usuario al precionar click en el boton editar
-    const idUsuario = $(this).attr('idUsuario');
+    var idUsuario = $(this).attr('idUsuario');
     
-    let datos = new FormData();
+    var datos = new FormData();
     //variables post
     datos.append('idUsuario', idUsuario);
 
@@ -88,10 +88,10 @@ $('.btnEditarUsuario').click( function() {
         cache: false,
         contentType:false,
         processData:false,
-        dateType:'json',
+        dataType:'json',
         success: function(respuesta) {
             respuesta = (JSON.parse(respuesta));
-            ;
+            
             $("#editarNombre").val(respuesta['nombre']);
             $("#editarUsuario").val(respuesta['usuario']);
             $("#editarPerfil").html(respuesta['perfil']);
@@ -116,21 +116,19 @@ $('.btnEditarUsuario').click( function() {
  */
 
  $('.btnActivar').click(function() {
-    const idUsuario = $(this).attr('idUsuario');
-    let estadoUsuario = $(this).attr('estadoUsuario');
 
-    console.log('idUsuario: ',idUsuario);
-    console.log('estadoUsuario: ',estadoUsuario);
+	var idUsuario = $(this).attr("idUsuario");
+	var estadoUsuario = $(this).attr("estadoUsuario");
 
-    var datos = new FormData();
-    datos.append('activarId', idUsuario);
-    datos.append('activarUsuario', estadoUsuario);
+	var datos = new FormData();
+ 	datos.append("activarId", idUsuario);
+  	datos.append("activarUsuario", estadoUsuario);
 
     $.ajax({
-        url:'ajax/usuarios.ajax.php',
-        method: 'POST',
+        url:"ajax/usuarios.ajax.php",
+        method: "POST",
         data: datos,
-        cache:false,
+        cache: false,
         contentType: false,
         processData: false,
         success: function( respuesta) {
@@ -143,6 +141,7 @@ $('.btnEditarUsuario').click( function() {
         $(this).addClass('btn-danger');
         $(this).html('Desactivado');
         $(this).attr('estadoUsuario', 1);
+        
     } else {
         $(this).addClass('btn-success');
         $(this).removeClass('btn-danger');
