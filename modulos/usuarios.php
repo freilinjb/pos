@@ -131,7 +131,7 @@ MODAL AGREGAR USUARIO
               
                 <span class="input-group-addon"><i class="fa fa-user"></i></span> 
 
-                <input type="text" class="form-control input-lg" name="nuevoNombre" placeholder="Ingresar nombre" required>
+                <input type="text" class="form-control input-lg" id="nuevoNombre"name="nuevoNombre" placeholder="Ingresar nombre" required>
 
               </div>
 

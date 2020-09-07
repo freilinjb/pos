@@ -141,7 +141,7 @@ $('.btnEditarUsuario').click( function() {
         $(this).addClass('btn-danger');
         $(this).html('Desactivado');
         $(this).attr('estadoUsuario', 1);
-        
+
     } else {
         $(this).addClass('btn-success');
         $(this).removeClass('btn-danger');
@@ -150,3 +150,26 @@ $('.btnEditarUsuario').click( function() {
     }
 
  });
+
+ /**
+  * REVISAR SI EL USUARIO ESTÁ REGISTRADO
+  */
+
+  $('#nuevoUsuario').change(function() {
+      const usuario = $(this).val();
+      let datos = new FormData();
+      datos.append('validarUsuario', usuario);
+
+      $.ajax({
+        url:"ajax/usuarios.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function( respuesta) {
+             console.log('respuesta: ', JSON.parse(respuesta));
+        }
+    });
+
+  })
