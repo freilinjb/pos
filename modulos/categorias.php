@@ -20,7 +20,7 @@
 
         <div class="box">
             <div class="box-header with-border">
-                <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgrergarUsuario">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgrergarCategoria">
                     Agregar usuario
                 </button>
             </div>
@@ -70,7 +70,7 @@
 
 <!-- MODAL AGRERGAR CATEGORÍA -->
 
-<div id="modalAgrergarUsuario" class="modal fade" role="dialog">
+<div id="modalAgrergarCategoria" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
         <div class="modal-content">
@@ -100,8 +100,8 @@
                 </div>
                 
                 <?php 
-                    $crearUsuario = new ControladorUsuarios();
-                    $crearUsuario->ctrCrearUsuario();
+                    $crearCategoria = new ControladorCategorias();
+                    $crearCategoria->ctrCrearCategoria();
                 ?>
             </form>
 
