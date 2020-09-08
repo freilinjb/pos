@@ -107,4 +107,19 @@ class ModeloUsuarios{
 		$stmt = null;
 
 	}
+	/**
+	 * @todo BORRAR USUARIO
+	 * 
+	 */
+	static public function mdlBorrarUsuario($tabla, $datos) {
+		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+		echo 'tablas: '.$tabla;
+		echo 'datos: '.$datos;
+		$stmt -> bindParam(":id", $datos, PDO::PARAM_INT);
+
+		return ($stmt -> execute()) ? "ok" : "error";
+
+		$stmt -> close();
+		$stmt = null;
+	}
 }

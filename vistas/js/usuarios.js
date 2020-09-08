@@ -194,6 +194,7 @@ $('.btnEditarUsuario').click( function() {
 
         const idUsuario = $(this).attr('idUsuario');
         const fotoUsuario = $(this).attr('fotoUsuario');
+        const usuario = $(this).attr('usuario');
 
         swal({
             title: '¿Estás seguro de borrar el usuario?',
@@ -206,7 +207,7 @@ $('.btnEditarUsuario').click( function() {
             confirmButtonText: 'Si, borrar usuario!'
         }).then((result) => {
             if(result.value) {
-                window.location = 'index.php?ruta=usuarios&idUsuario='+idUsuario+'&fotoUsuario='+fotoUsuario;
+                window.location = 'index.php?ruta=usuarios&idUsuario='+idUsuario+'&usuario='+usuario+'&fotoUsuario='+fotoUsuario;
             }
         });
    });
