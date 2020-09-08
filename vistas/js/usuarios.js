@@ -73,7 +73,9 @@ $(".nuevaFoto").change(function(){
 /**
  * EDITAR USUARIO
  */
-$('.btnEditarUsuario').click( function() {
+//Cuando el documento este cargado busque en cualquier momento
+//busca btnEditarUsuario
+$(document).on('click','.btnEditarUsuario' , function() {
     //Captura el id del usuario al precionar click en el boton editar
     var idUsuario = $(this).attr('idUsuario');
     
@@ -90,8 +92,8 @@ $('.btnEditarUsuario').click( function() {
         processData:false,
         dataType:'json',
         success: function(respuesta) {
-            respuesta = (JSON.parse(respuesta));
-            
+            // respuesta = (JSON.parse(respuesta));
+            console.log(respuesta);
             $("#editarNombre").val(respuesta['nombre']);
             $("#editarUsuario").val(respuesta['usuario']);
             $("#editarPerfil").html(respuesta['perfil']);
@@ -114,8 +116,7 @@ $('.btnEditarUsuario').click( function() {
 /**
  * ACTIVAR USUARIO
  */
-
- $('.btnActivar').click(function() {
+$(document).on('click','.btnActivar' , function() {
 
 	var idUsuario = $(this).attr("idUsuario");
 	var estadoUsuario = $(this).attr("estadoUsuario");
@@ -132,7 +133,18 @@ $('.btnEditarUsuario').click( function() {
         contentType: false,
         processData: false,
         success: function( respuesta) {
-             
+             if(window.matchMedia("(max-width:767px)").matches) {
+                swal({
+                    title: 'El usuario ha sido actualizado',
+                    type: 'success',
+                    confirmButtonText: '¡Cerrar!'
+                }).then((result) => {
+
+                    if(result.value) {
+                        window.location = 'usuarios';
+                    }
+                });
+             }
         }
     });
 
@@ -154,6 +166,7 @@ $('.btnEditarUsuario').click( function() {
  /**
   * REVISAR SI EL USUARIO ESTÁ REGISTRADO
   */
+
 
   $('#nuevoUsuario').change(function() {
     //Remueve el mensaje de alerta
@@ -189,8 +202,7 @@ $('.btnEditarUsuario').click( function() {
   /**
    * todo ELiminar Usuario
    */
-
-   $('.btnEliminarUsuario').click( function() {
+  $(document).on('click','.btnEliminarUsuario' , function() {
 
         const idUsuario = $(this).attr('idUsuario');
         const fotoUsuario = $(this).attr('fotoUsuario');
