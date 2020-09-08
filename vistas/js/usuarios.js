@@ -184,4 +184,29 @@ $('.btnEditarUsuario').click( function() {
         }
     });
 
-  })
+  });
+
+  /**
+   * todo ELiminar Usuario
+   */
+
+   $('.btnEliminarUsuario').click( function() {
+
+        const idUsuario = $(this).attr('idUsuario');
+        const fotoUsuario = $(this).attr('fotoUsuario');
+
+        swal({
+            title: '¿Estás seguro de borrar el usuario?',
+            text: '¡Si no lo está puede cancelar la acción!',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Cancelar',
+            confirmButtonText: 'Si, borrar usuario!'
+        }).then((result) => {
+            if(result.value) {
+                window.location = 'index.php?ruta=usuarios&idUsuario='+idUsuario+'&fotoUsuario='+fotoUsuario;
+            }
+        });
+   });
