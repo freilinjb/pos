@@ -36,6 +36,14 @@
                     </thead>
 
                     <tbody>
+                    <?php 
+                        $item = null;
+                        $valor = null;
+
+                        $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
+
+                        var_dump($categorias);
+                    ?>
                         <tr>
                             <td>1</td>
                             <td>EQUIPOS ELECTROMECÁNICOS</td>
