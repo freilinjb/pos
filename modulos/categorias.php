@@ -26,7 +26,7 @@
             </div>
 
             <div class="box-body">
-                <table class="table table-border table-striped tablas dt-responsive">
+                <table class="table table-border table-striped table-bordered table-hover tablas dt-responsive">
                     <thead>
                         <tr>
                             <th style="width: 10px;">#</th>
@@ -42,18 +42,20 @@
 
                         $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
 
-                        var_dump($categorias);
+                        foreach($categorias as $key => $value) {
+                            echo '<tr>
+                                    <td>'.($key+1).'</td>
+                                    <td class="text-uppercase">'.$value['categoria'].'</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
+                                            <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>';
+                        }
                     ?>
-                        <tr>
-                            <td>1</td>
-                            <td>EQUIPOS ELECTROMECÁNICOS</td>
-                            <td>
-                                <div class="btn-group">
-                                    <button class="btn btn-warning"><i class="fa fa-pencil"></i></button>
-                                    <button class="btn btn-danger"><i class="fa fa-times"></i></button>
-                                </div>
-                            </td>
-                        </tr>
+                        
                         <tr>
                             <td>2</td>
                             <td>Usuario Administrador</td>
@@ -66,10 +68,6 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
-
-            <div class="box-footer">
-                Footer
             </div>
         </div>
 
