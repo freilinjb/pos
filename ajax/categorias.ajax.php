@@ -11,7 +11,7 @@ class AjaxCategorias {
         $item = "id";
         $valor = $this->idCategoria;
         $respuesta = ControladorCategorias::ctrMostrarCategorias($item, $valor);
-
+        
         echo json_encode($respuesta);
     }
 }
@@ -24,6 +24,5 @@ class AjaxCategorias {
      $categoria = new AjaxCategorias();
      $categoria-> idCategoria = $_POST['idCategoria'];
      $categoria->ajaxEditarCategoria();
-
  }
 

@@ -9,7 +9,6 @@ $(document).on('click','.btnEditarCategoria' , function() {
 
 
      const idCategoria = $(this).attr('idCategoria');
-     console.log('idCategoria: ', idCategoria);
 
 
      var datos = new FormData();
@@ -24,7 +23,10 @@ $(document).on('click','.btnEditarCategoria' , function() {
         processData: false,
         dataType: 'json',
         success: function(respuesta) {
-            console.log('respuesta: ', respuesta);
+            $('#editarCategoria').val(respuesta['categoria']);
+            $('#idCategoria').val(respuesta['id']);
+
+            console.log(respuesta);
         }
      });
  })

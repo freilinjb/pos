@@ -126,8 +126,9 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-th"></i></span>
-
                                 <input type="text" class="form-control input-lg " id="editarCategoria" name="editarCategoria" placeholder="Ingresar categoria" require>
+                                <!-- PARA PODER IDENTIFICAR QUE CATEGORIA ES QUE ESTOY EDITANDO Y ENVIARLO POR AJAX -->
+                                <input type="hidden" name="idCategoria" id="idCategoria">
                             </div>
                         </div>
                     </div>
@@ -137,10 +138,10 @@
                         <button type="submit" class="btn btn-primary">Guardar cambios</button>
                 </div>
                 
-                <!-- <?php 
-                    $crearCategoria = new ControladorCategorias();
-                    $crearCategoria->ctrCrearCategoria();
-                ?> -->
+                 <?php 
+                    $editarCategoria = new ControladorCategorias();
+                    $editarCategoria->ctrEditarCategoria();
+                ?>
             </form>
 
         </div>

@@ -17,6 +17,22 @@
             return ($stmt->execute()) ? "ok" : "error";
 
          }
+
+        /**
+         * @todo EDITAR CATEGORIAS
+         */
+
+        static public function mdlEditarCategoria($tabla, $datos) {
+
+            $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET categoria = :categoria WHERE id = :id");
+
+            $stmt -> bindParam(":categoria", $datos['categoria'], PDO::PARAM_STR);
+            $stmt -> bindParam(":id", $datos['id'], PDO::PARAM_STR);
+
+            return ($stmt->execute()) ? "ok" : "error";
+
+         }
+
          /**
           * @todo MOSTRAR CATEGORIAS
           */
