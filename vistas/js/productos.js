@@ -65,7 +65,9 @@ $('#nuevaCategoria').change(function() {
         processData: false,
         dataType: 'json',
         success: function(respuesta) {
-            console.log('respuesta: ', respuesta);
+            var nuevoCodigo = Number(respuesta['codigo']) + 1;
+            // console.log('respuestaCodigo: ', nuevoCodigo);
+            $('#nuevoCodigo').val(nuevoCodigo);
         }
     });
 });
