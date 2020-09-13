@@ -9,3 +9,7 @@
     }
 
  });
+
+ $('.tablasProductos').DataTable( {
+    "ajax": "ajax/datatable-productos.ajax.php"
+} );
