@@ -43,14 +43,6 @@
                     </thead>
 
                     <tbody>
-                        <?php
-                            $item = null;
-                            $valor = null;
-
-                            $productos = ControladorProductos::ctrMostrarProductos($item, $valor);
-
-                            print_r($productos);
-                        ?>
                         <tr>
                             <td>1</td>
                             <td><img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="40px" alt="Foto"></td>
