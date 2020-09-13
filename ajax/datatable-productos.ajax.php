@@ -22,34 +22,37 @@ class TablaProductos {
         $valor = null;
 
         $productos = ControladorProductos::ctrMostrarProductos($item, $valor);
-        
-        print_r($productos);
-        
-        return;
 
         $imagen = "<img src='vistas/img/usuarios/juanmt/126.png' width='40px'>";
         $botones =  "<div class='btn-group'><button class='btn btn-warning'><i class='fa fa-pencil'></i></button><button class='btn btn-danger'><i class='fa fa-times'></i></button></div>";        
 
-            echo '{
-                "data": [
-                  [
-                    "Tiger Nixon",
-                    "System Architect",
-                    "'.$imagen.'",
-                    "5421",
-                    "2011/04/25",
-                    "'.$botones.'"
-                  ],
-                  [
-                    "Garrett Winters",
-                    "Accountant",
-                    "'.$imagen.'",
-                    "8422",
-                    "2011/07/25",
-                    "'.$botones.'"
-                  ]
-                ]
-              }';
+        $imagen = "<img src='vistas/img/usuarios/juanmt/126.png' width='40px'>";
+        $botones =  "<div class='btn-group'><button class='btn btn-warning'><i class='fa fa-pencil'></i></button><button class='btn btn-danger'><i class='fa fa-times'></i></button></div>";        
+        
+        // print_r($productos);
+
+        $datosJson = '{
+            "data": [';
+
+        $length = count($productos);
+
+        for($i = 0; $i < $length; $i++) {
+            $datosJson .= '[
+                "Tiger Nixon",
+                "System Architect",
+                "'.$imagen.'",
+                "5421",
+                "2011/04/25",
+                "'.$botones.'"
+            ],';
+        }
+
+        $datosJson = substr($datosJson, 0, -1);
+
+        $datosJson .= ']
+            }';
+          
+        echo $datosJson;
     }
 }
 
