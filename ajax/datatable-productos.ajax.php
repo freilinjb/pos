@@ -23,11 +23,8 @@ class TablaProductos {
 
         $productos = ControladorProductos::ctrMostrarProductos($item, $valor);
 
-        $imagen = "<img src='vistas/img/usuarios/juanmt/126.png' width='40px'>";
         $botones =  "<div class='btn-group'><button class='btn btn-warning'><i class='fa fa-pencil'></i></button><button class='btn btn-danger'><i class='fa fa-times'></i></button></div>";        
 
-        $imagen = "<img src='vistas/img/usuarios/juanmt/126.png' width='40px'>";
-        $botones =  "<div class='btn-group'><button class='btn btn-warning'><i class='fa fa-pencil'></i></button><button class='btn btn-danger'><i class='fa fa-times'></i></button></div>";        
         
         // print_r($productos);
 
@@ -37,12 +34,19 @@ class TablaProductos {
         $length = count($productos);
 
         for($i = 0; $i < $length; $i++) {
+
+            $imagen = "<img src='".$productos[$i]["imagen"]."' width='40px'>";
+
             $datosJson .= '[
-                "Tiger Nixon",
-                "System Architect",
+                "'.($i+1).'",
                 "'.$imagen.'",
-                "5421",
-                "2011/04/25",
+                "'.$productos[$i]["codigo"].'",
+                "'.$productos[$i]["descripcion"].'",
+                "Taladros",
+                "'.$productos[$i]["stock"].'",
+                "'.$productos[$i]["precio_compra"].'",
+                "'.$productos[$i]["precio_venta"].'",
+                "'.$productos[$i]["fecha"].'",
                 "'.$botones.'"
             ],';
         }

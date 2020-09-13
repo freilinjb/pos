@@ -29,16 +29,6 @@
                 <table class="table table-border table-striped dt-responsive tablasProductos">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Extn.</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
-                        </tr>
-                    </thead> 
-                    <!-- <thead>
-                        <tr>
                             <th style="width: 10px;">#</th>
                             <th>Imagen</th>
                             <th>Código</th>
@@ -51,10 +41,6 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
-
-                    <tbody>
-                        
-                    </tbody> -->
                 </table>
             </div>
         </div>
