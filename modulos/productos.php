@@ -4,7 +4,7 @@
     <section class="content-header">
 
         <h1>
-            Administrar usuarios
+            Administrar productos
             <small>Panel de control</small>
 
         </h1>
@@ -82,10 +82,6 @@
                         ?>
                     </tbody>
                 </table>
-            </div>
-
-            <div class="box-footer">
-                Footer
             </div>
         </div>
 
