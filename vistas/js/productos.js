@@ -65,9 +65,15 @@ $('#nuevaCategoria').change(function() {
         processData: false,
         dataType: 'json',
         success: function(respuesta) {
-            var nuevoCodigo = Number(respuesta['codigo']) + 1;
-            // console.log('respuestaCodigo: ', nuevoCodigo);
-            $('#nuevoCodigo').val(nuevoCodigo);
+
+            if(!respuesta) {
+                const nuevoCodigo = idCategoria+"01";
+                $('#nuevoCodigo').val(nuevoCodigo);
+            } else {
+                const nuevoCodigo = Number(respuesta['codigo']) + 1;
+                // console.log('respuestaCodigo: ', nuevoCodigo);
+                $('#nuevoCodigo').val(nuevoCodigo);
+            }   
         }
     });
 });
