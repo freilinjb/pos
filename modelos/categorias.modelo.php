@@ -52,5 +52,17 @@
 
                 return $stmt -> fetchAll();
             }
-        }   
+        }
+        
+        /**
+         * @todo BORRAR CATEGORIA
+         */
+        
+        static public function mdlBorrarCategoria($tabla, $datos) {
+            $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+            $stmt -> bindParam(":id", $datos, PDO::PARAM_INT);
+
+            return ($stmt -> execute())  ? 'ok': "error"; 
+        }
+        
     }

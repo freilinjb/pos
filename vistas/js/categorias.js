@@ -30,3 +30,29 @@ $(document).on('click','.btnEditarCategoria' , function() {
         }
      });
  })
+
+
+ /**
+  * @todo ELIMINAR CATEGORIA
+  */
+
+  $('.btnEliminarCategoria').click(function() {
+
+     const idCategoria = $(this).attr('idCategoria');
+
+    console.log('idCategoria: ', idCategoria);
+    swal({
+        title: '¿Está seguro de borrar la categoría?',
+        text: '¡Si no lo está puede cancelar la acción',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Si, borrar categoría'
+    }).then((result)=> {
+        if(result.value) {
+            window.location = "index.php?ruta=categorias&idCategoria="+idCategoria;
+        }
+    });
+  });

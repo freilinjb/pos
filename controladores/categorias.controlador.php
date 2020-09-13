@@ -105,7 +105,7 @@ class ControladorCategorias
 					swal({
 
 						type: "success",
-						title: "La categoria ha sido actializada correctamente",
+						title: "La categoria ha sido actualizada correctamente",
 						showConfirmButton: true,
 						confirmButtonText: "Cerrar",
 						closeOnConfirm: false
@@ -176,4 +176,38 @@ class ControladorCategorias
 
          return $respuesta;
      }
+     
+     /**
+      * @todo BORRAR CATEGORIA
+      */
+
+      static public function ctrBorrarCategoria() {
+        
+        if(isset($_GET['idCategoria'])) {
+            $tabla = "categorias";
+            $datos = $_GET['idCategoria'];
+
+            $respuesta = ModeloCategorias::mdlBorrarCategoria($tabla, $datos); 
+
+            if($respuesta === 'ok') {
+                echo '<script>
+                swal({
+
+                    type: "success",
+                    title: "La categoria ha sido borrada correctamente",
+                    showConfirmButton: true,
+                    confirmButtonText: "Cerrar",
+                    closeOnConfirm: false
+
+                }).then(function(result){
+
+                    if(result.value){
+                        window.location = "categorias";
+                    }
+
+                });
+            </script>';
+            }
+        }
+      }
 }
