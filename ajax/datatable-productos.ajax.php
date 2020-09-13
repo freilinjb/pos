@@ -15,8 +15,17 @@ class TablaProductos {
     /**
     * @todo MOSTRAR LABLA DE PRODUCTOS
     */
-    
+
     public function mostrarTablaProdutos() {
+
+        $item = null;
+        $valor = null;
+
+        $productos = ControladorProductos::ctrMostrarProductos($item, $valor);
+        
+        print_r($productos);
+        
+        return;
 
         $imagen = "<img src='vistas/img/usuarios/juanmt/126.png' width='40px'>";
         $botones =  "<div class='btn-group'><button class='btn btn-warning'><i class='fa fa-pencil'></i></button><button class='btn btn-danger'><i class='fa fa-times'></i></button></div>";        
