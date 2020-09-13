@@ -193,7 +193,7 @@
 
                                 <br>
                                 <!-- CHECK PARA PORCENTAJE -->
-                                <div class="col-xs-6" style="padding: 0">
+                                <div class="col-xs-4" style="padding: 0">
                                     <div class="form-group">
                                         <label>
                                             <input type="checkbox" class="minimal porcentaje" checked>
@@ -203,7 +203,7 @@
                                 </div>
 
                                 <!-- ENTRADA PARA PORCENTAJE -->
-                                <div class="col-xs-6">
+                                <div class="col-xs-8">
                                     <div class="input-group">
                                         <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="40"  name="" id="" require>
                                         <span class="input-group-addon"><i class="fa fa-percent"></i></span>

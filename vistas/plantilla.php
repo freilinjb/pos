@@ -31,6 +31,9 @@ session_start();
   <!-- Ionicons -->
   <link rel="stylesheet" href="vistas/bower_components/Ionicons/css/ionicons.min.css">
 
+  <!-- iCheck for checkbox and radio inputs -->
+  <link rel="stylesheet" href="vistas/plugins/iCheck/all.css">
+
   <!-- Theme style -->
   <link rel="stylesheet" href="vistas/dist/css/AdminLTE.css">
   
@@ -68,6 +71,8 @@ session_start();
   <!-- SweetAlert2 -->
   <script src="vistas/plugins/sweetalert2/sweetalert2.all.js"></script>
 
+  <!-- iCheck for checkbox and radio inputs -->
+  <script src="vistas/plugins/iCheck/icheck.min.js"></script>
 </head>
 
 <!--=====================================
