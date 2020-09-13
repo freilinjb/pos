@@ -64,6 +64,33 @@
                 <div class="modal-body">
 
                     <div class="box-body">
+                        
+                        <!-- ENTRADA PARA SELECCIONAR SU CATEGORIA -->
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-th"></i></span>
+
+                                <select class="form-control input-lg" id="nuevaCategoria" name="nuevaCategoria" require>
+                                    <option value="">Seleccionar categoria</option>
+                                    <?php
+                                        $item = null;
+                                        $valor = null;
+
+                                        $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
+
+                                        foreach($categorias as $key => $value) {
+
+                                            echo '<option value="'.$value['id'].'">'.$value['categoria'].'</option>';
+
+                                        }
+                                    ?>
+                                    
+                                    <option value="Andamos">Andamos</option>
+                                    <option value="Equipos para construcción">Equipos para construcción</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <!-- ENTRADA PARA EL CÓDIGO -->
                         <div class="form-group">
                             <div class="input-group">
@@ -79,20 +106,6 @@
                                 <span class="input-group-addon"><i class="fa fa-product-hunt"></i></span>
 
                                 <input type="text" class="form-control input-lg " name="nuevoDescripcion" placeholder="Ingresar descripción" require>
-                            </div>
-                        </div>
-
-                        <!-- ENTRADA PARA SELECCIONAR SU CATEGORIA -->
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-users"></i></span>
-
-                                <select class="form-control input-lg" name="nuevoCategoria">
-                                    <option value="">Seleccionar categoria</option>
-                                    <option value="Taladros">Taladros</option>
-                                    <option value="Andamos">Andamos</option>
-                                    <option value="Equipos para construcción">Equipos para construcción</option>
-                                </select>
                             </div>
                         </div>
                         

@@ -43,3 +43,29 @@
         }
     }
 } );
+
+/**
+ * @todo CAPTURANDO LA CATEGORIA PARA ASIGNAR CÓDIGO
+ */
+
+$('#nuevaCategoria').change(function() {
+
+    const idCategoria = $(this).val();
+    console.log('idCategoria', idCategoria);
+    
+    var datos = new FormData();
+    datos.append('idCategoria', idCategoria);
+
+    $.ajax({
+        url: 'ajax/productos.ajax.php',
+        method: 'POST',
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: 'json',
+        success: function(respuesta) {
+            console.log('respuesta: ', respuesta);
+        }
+    });
+});

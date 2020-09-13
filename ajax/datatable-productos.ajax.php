@@ -57,8 +57,7 @@ class TablaProductos {
             } else {
                 $clase = "success";
             }
-
-            $stock = "<button class='btn btn-".$clase."'>".$productos[$i]["stock"]."</button>";
+            $stock = "<span class='badge label-".$clase."'>".$productos[$i]["stock"]."</span>";
             
             #CONSTRULLE EL JSON PARA EL DATATABLE
             $datosJson .= '[
