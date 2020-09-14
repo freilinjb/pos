@@ -12,4 +12,74 @@ class ControladorProductos {
 
         return $respuesta;
     }
+
+    /**
+     * @todo REGISTRAR PRODUCTO
+     *
+     * @return string
+     */
+    static public function ctrCrearProducto() {
+
+        if(isset($_POST['nuevaDescripcion'])) {
+            if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarCategoria"]) &&
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoStock"]) &&
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoPrecioVenta"])) {
+                    
+                $ruta = "vistas/img/productos/default/anonymous.php";
+
+                $tabla = "productos";
+                $datos = array("id_categoria" => $_POST['nuevaCategoria'],
+                            "codigo" => $_POST['nuevoCodigo'],
+                            "descripcion" => $_POST['nuevaDescripcion'],
+                            "stock" => $_POST['nuevoStock'],
+                            "PrecioCompra" => $_POST['nuevoPrecioCompra'],
+                            "PrecioVenta" => $_POST['nuevoPrecioVenta'],
+                            "imagen" => $ruta);
+                
+                $respuesta = ModeloProductos::mdlIngresarProducto($tabla, $datos);
+
+                if($respuesta == 'ok') {
+                    echo '<script>
+
+					swal({
+
+						type: "success",
+						title: "La categoria ha sido actualizada correctamente",
+						showConfirmButton: true,
+						confirmButtonText: "Cerrar",
+						closeOnConfirm: false
+
+					}).then(function(result){
+
+						if(result.value){
+							window.location = "productos";
+						}
+
+					});
+				</script>';
+                } 
+                
+            } else {
+                echo '<script>
+
+						swal({
+	
+							type: "error",
+							title: "¡La producto no puede ir con los campos vacíos o llevar caracteres especiales!",
+							showConfirmButton: true,
+							confirmButtonText: "Cerrar"
+	
+						}).then(function(result){
+	
+							if(result.value){
+								window.location = "productos";
+							}
+	
+						});
+					
+	
+					</script>';
+            }
+        }         
+    }
 }

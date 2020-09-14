@@ -77,3 +77,52 @@ $('#nuevaCategoria').change(function() {
         }
     });
 });
+
+/**
+ * @todo AGREGAR PRECIO DE VENTA
+ * CADA VEZ QUE CAMBIA EL PRECIO DE COMPRA
+ * VERIFICA EL PORCENTAJE 
+ */
+
+ $('#nuevoPrecioCompra').change(function() {
+    //Pregunta si el porcentaje esta habilidado
+    if($('.porcentaje').prop('checked')) {
+        const valorPorcentaje = $('.nuevoPorcentaje').val();
+        console.log('valor porcentaje: ', valorPorcentaje);
+
+        const porcentaje = $('#nuevoPrecioCompra').val()*Number((1+'.'+valorPorcentaje));
+        
+        $('#nuevoPrecioVenta').val(porcentaje.toFixed(2));
+        //CAMBIAR A SOLO LECTURA CUAL ESTA HABILIDADO EL CHECKBOX
+        $('#nuevoPrecioVenta').prop('readonly', true);
+    } 
+ });
+
+/**
+ * CADA VEZ QUE CAMBIA EL PORCENTAJE
+ * VERIFICA EL PORCENTAJE 
+ */
+
+$('.nuevoPorcentaje').change(function() {
+    //Pregunta si el porcentaje esta habilidado
+    if($('.porcentaje').prop('checked')) {
+        const valorPorcentaje = $('.nuevoPorcentaje').val();
+        console.log('valor porcentaje: ', valorPorcentaje);
+
+        const porcentaje = $('#nuevoPrecioCompra').val()*Number((1+'.'+valorPorcentaje));
+        
+        $('#nuevoPrecioVenta').val(porcentaje.toFixed(2));
+        //CAMBIAR A SOLO LECTURA CUAL ESTA HABILIDADO EL CHECKBOX
+        $('#nuevoPrecioVenta').prop('readonly', true);
+    } 
+ });
+
+ $(".porcentaje").on('ifUnchecked', function() {
+    $('#nuevoPrecioVenta').prop('readonly', false);
+
+ });
+
+ $(".porcentaje").on('ifchecked', function() {
+    $('#nuevoPrecioVenta').prop('readonly', true);
+
+ });
