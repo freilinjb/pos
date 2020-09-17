@@ -35,8 +35,8 @@ class ModeloProductos {
         $stmt->bindParam(":descripcion", $datos['descripcion'],PDO::PARAM_STR);
         $stmt->bindParam(":imagen", $datos['imagen'],PDO::PARAM_STR);
         $stmt->bindParam(":stock", $datos['stock'],PDO::PARAM_INT);
-        $stmt->bindParam(":precio_compra", $datos['PrecioCompra'],PDO::PARAM_INT);
-        $stmt->bindParam(":precio_venta", $datos['PrecioVenta'],PDO::PARAM_INT);
+        $stmt->bindParam(":precio_compra", $datos['PrecioCompra'],PDO::PARAM_STR);
+        $stmt->bindParam(":precio_venta", $datos['PrecioVenta'],PDO::PARAM_STR);
         
         if($stmt->execute()) {
             return "ok";

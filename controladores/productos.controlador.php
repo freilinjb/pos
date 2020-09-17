@@ -22,7 +22,10 @@ class ControladorProductos {
 
         if(isset($_POST['nuevaDescripcion'])) {
             print_r($_POST);
-            if(true) {
+            if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevaDescripcion"]) ||
+            preg_match('/^[0-9]+$/', $_POST["nuevoStock"]) &&
+            preg_match('/^[0-9,.]+$/', $_POST["nuevoPrecioCompra"]) &&
+            preg_match('/^[0-9,.]+$/', $_POST["nuevoPrecioVenta"])) {
                     
                 $ruta = "vistas/img/productos/default/anonymous.php";
 
@@ -45,7 +48,7 @@ class ControladorProductos {
 						type: "success",
 						title: "La categoria ha sido actualizada correctamente",
 						showConfirmButton: true,
-						confirmButtonText: "Cerrar"
+						confirmButtonText: "Cerrar",
 
 					}).then(function(result){
 
@@ -55,7 +58,7 @@ class ControladorProductos {
 
 					});
 				</script>';
-                }
+                } 
                 
             } else {
                 echo '<script>

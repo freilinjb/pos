@@ -166,7 +166,7 @@ MODAL AGREGAR PRODUCTO
                   <div class="input-group">
                   
                     <span class="input-group-addon"><i class="fa fa-arrow-up"></i></span> 
-
+                    <!-- STED para permitir valores decimales -->
                     <input type="number" class="form-control input-lg" id="nuevoPrecioCompra" name="nuevoPrecioCompra" min="0" step="any" placeholder="Precio de compra" required>
 
                   </div>
