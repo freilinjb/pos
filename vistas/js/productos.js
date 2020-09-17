@@ -122,7 +122,6 @@ $('.nuevoPorcentaje').change(function() {
 
  });
 
- $(".porcentaje").on('ifchecked', function() {
+ $(".porcentaje").on('ifChecked', function() {
     $('#nuevoPrecioVenta').prop('readonly', true);
-
  });

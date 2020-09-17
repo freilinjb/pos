@@ -1,4 +1,4 @@
-
+//SUBIENDO LA FOTO DEL USUARIO
 $(".nuevaFoto").change(function(){
 
     var imagen = this.files[0];
