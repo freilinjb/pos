@@ -64,4 +64,19 @@ class ModeloProductos {
         
         return ($stmt->execute()) ? "ok" : "error";
     }
+
+    /**
+     * BORRAR PRODUCTO
+     *
+     * @param [string] $tabla
+     * @param [string] $datos
+     * @return void
+     */
+    static public function mdlBorrarProducto($tabla, $datos) {
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+
+        $stmt->bindParam(":id", $datos, PDO::PARAM_INT);
+
+        return ($stmt->execute()) ? "ok" : "error";
+    }
 }

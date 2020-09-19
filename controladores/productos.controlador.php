@@ -145,8 +145,8 @@ class ControladorProductos {
 
     /**
      * @todo EDITAR PRODUCTO [COPIADO Y EDITADO DE AGRERGAR PRODUCTO]
+     * @return void
      */
-
     static public function ctrEditarProducto() {
 
         if(isset($_POST['editarDescripcion'])) {
@@ -281,4 +281,38 @@ class ControladorProductos {
         }         
     }
 
+    static public function ctrEliminarProducto() {
+        if(isset($_GET['idProducto'])) {
+            $tabla = "productos";
+            $datos = $_GET['idProducto'];
+            
+            if($_GET['imagen'] != "" && $_GET['imagen'] != "vistas/img/productos/default/anonymous.png") {
+
+                unlink($_GET['imagen']);
+                mkdir('vistas/img/productos'.$_GET['codigo']);
+            }
+            
+            $respuesta = ModeloProductos::mdlBorrarProducto($tabla, $datos);
+
+            if($respuesta === 'ok') {
+                echo '<script>
+                swal({
+
+                    type: "success",
+                    title: "El producto ha sido borrada correctamente",
+                    showConfirmButton: true,
+                    confirmButtonText: "Cerrar",
+                    closeOnConfirm: false
+
+                }).then(function(result){
+
+                    if(result.value){
+                        window.location = "productos";
+                    }
+
+                });
+            </script>';
+            }
+        }
+    }
 }

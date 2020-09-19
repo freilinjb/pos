@@ -241,3 +241,30 @@ $(".nuevaImagen").change(function(){
         }
     });
  });
+
+
+ /**
+  * @todo ELIMINAR PRODUCTO
+  */
+
+  $('.tablaProductos tbody').on('click', 'button.btnEliminarProducto', function() {
+    const idProducto = $(this).attr('idProducto');
+    const codigo = $(this).attr('codigo');
+    const imagen = $(this).attr('imagen');
+
+    swal({
+        title: '¿Está seguro de borrar el producto?',
+        text: '¡Si no lo esta puede candelar la accion!',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Si, borrar producto!'
+    }).then((result) => {
+        if(result.value) {
+            window.location = "index.php?ruta=productos&idProducto="+idProducto+"&imagen="+imagen+"&codigo="+codigo;
+        }
+    });
+    // console.log('idProducto: ', idProducto);
+  });

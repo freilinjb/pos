@@ -393,3 +393,7 @@ MODAL EDITAR PRODUCTO
     </div>
   </div>
 </div>
+<?php
+        $eliminarProducto = new ControladorProductos();
+        $eliminarProducto->ctrEliminarProducto();
+?>
