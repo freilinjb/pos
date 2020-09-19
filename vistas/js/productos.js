@@ -84,7 +84,7 @@ $('#nuevaCategoria').change(function() {
  * VERIFICA EL PORCENTAJE 
  */
 
- $('#nuevoPrecioCompra').change(function() {
+ $('#nuevoPrecioCompra, #editarPrecioCompra').change(function() {
     //Pregunta si el porcentaje esta habilidado
     if($('.porcentaje').prop('checked')) {
         const valorPorcentaje = $('.nuevoPorcentaje').val();
@@ -92,9 +92,15 @@ $('#nuevaCategoria').change(function() {
 
         const porcentaje = $('#nuevoPrecioCompra').val()*Number((1+'.'+valorPorcentaje));
         
+        const editarPorcentaje = $('#editarPrecioCompra').val()*Number((1+'.'+valorPorcentaje));
+        
+        //MODAL CREAR PRODUCTO
         $('#nuevoPrecioVenta').val(porcentaje.toFixed(2));
-        //CAMBIAR A SOLO LECTURA CUAL ESTA HABILIDADO EL CHECKBOX
         $('#nuevoPrecioVenta').prop('readonly', true);
+
+        //MODAL EDITAR PRODUCTO
+        $('#editarPrecioVenta').val(editarPorcentaje.toFixed(2));
+        $('#editarPrecioVenta').prop('readonly', true);
     } 
  });
 
@@ -106,24 +112,34 @@ $('#nuevaCategoria').change(function() {
 $('.nuevoPorcentaje').change(function() {
     //Pregunta si el porcentaje esta habilidado
     if($('.porcentaje').prop('checked')) {
-        const valorPorcentaje = $('.nuevoPorcentaje').val();
+        //PARA QUE TOME EL VALOR DEL 
+        const valorPorcentaje = $(this).val();
         console.log('valor porcentaje: ', valorPorcentaje);
 
         const porcentaje = $('#nuevoPrecioCompra').val()*Number((1+'.'+valorPorcentaje));
         
+        const editarPorcentaje = $('#editarPrecioCompra').val()*Number((1+'.'+valorPorcentaje));
+        
         $('#nuevoPrecioVenta').val(porcentaje.toFixed(2));
         //CAMBIAR A SOLO LECTURA CUAL ESTA HABILIDADO EL CHECKBOX
         $('#nuevoPrecioVenta').prop('readonly', true);
+
+        //MODAL EDITAR PRODUCTO
+        $('#editarPrecioVenta').val(editarPorcentaje.toFixed(2));
+        $('#editarPrecioVenta').prop('readonly', true);
+        
     } 
  });
 
  $(".porcentaje").on('ifUnchecked', function() {
     $('#nuevoPrecioVenta').prop('readonly', false);
+    $('#editarPrecioVenta').prop('readonly', false);
 
  });
 
  $(".porcentaje").on('ifChecked', function() {
     $('#nuevoPrecioVenta').prop('readonly', true);
+    $('#editarPrecioVenta').prop('readonly', true);
  });
 
  //SUBIENDO LA FOTO DEL PRODUCTO

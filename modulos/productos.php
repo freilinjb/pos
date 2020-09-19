@@ -345,7 +345,7 @@ MODAL EDITAR PRODUCTO
                 <div class="col-xs-12 col-sm-6">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span> 
-                    <input type="number" class="form-control input-lg" id="editarPrecioVenta" name="editarPrecioVenta" min="0" step="any" required>
+                    <input type="number" class="form-control input-lg" id="editarPrecioVenta" name="editarPrecioVenta" min="0" readonly step="any" required>
                   </div>
                   <br>
                   <!-- CHECKBOX PARA PORCENTAJE -->
