@@ -208,9 +208,20 @@ $(".nuevaImagen").change(function(){
                 processData: false,
                 dataType: 'json',
                 success: function(respuesta) {
-                    console.log('respuesta CATEGORIA: ', respuesta);
+                    
+                    $('#editarCategoria').val(respuesta['id']);
+                    $('#editarCategoria').html(respuesta['categoria']);
                 }
             });
+            $('#editarCodigo').val(respuesta['codigo']);
+            $('#editarDescripcion').val(respuesta['descripcion']);
+            $('#editarStock').val(respuesta['stock']);
+            $('#editarPrecioCompra').val(respuesta['precio_compra']);
+            $('#editarPrecioVenta').val(respuesta['precio_venta']);
+
+            if(respuesta['imagen'] != '') {}
+                $('#imagenActual').val(respuesta['imagen']);
+                $('.previsualizar').attr('src',respuesta['imagen']);
         }
     });
  });
