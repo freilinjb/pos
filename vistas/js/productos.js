@@ -184,5 +184,20 @@ $(".nuevaImagen").change(function(){
  */
  $('.tablaProductos tbody').on('click', 'button.btnEditarProducto', function() {
     const idProducto = $(this).attr('idProducto');
-    console.log('idProducto: ', idProducto);
+    
+    var datos = new FormData();
+    datos.append('idProducto', idProducto);
+
+    $.ajax({
+        url: 'ajax/productos.ajax.php',
+        method: 'POST',
+        data: datos,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(respuesta) {
+
+            console.log('respuesta: ', respuesta);
+        }
+    });
  });
