@@ -185,7 +185,7 @@ $(".nuevaImagen").change(function(){
  $('.tablaProductos tbody').on('click', 'button.btnEditarProducto', function() {
     const idProducto = $(this).attr('idProducto');
     
-    var datos = new FormData();
+    const datos = new FormData();
     datos.append('idProducto', idProducto);
 
     $.ajax({
@@ -197,7 +197,20 @@ $(".nuevaImagen").change(function(){
         dataType: "json",
         success: function(respuesta) {
 
-            console.log('respuesta: ', respuesta);
+            var datosCategoria = new FormData();
+            datosCategoria.append('idCategoria', respuesta['id_categoria']);
+
+            $.ajax({
+                url: 'ajax/categorias.ajax.php',
+                method: 'POST',
+                data: datosCategoria,
+                contentType: false,
+                processData: false,
+                dataType: 'json',
+                success: function(respuesta) {
+                    console.log('respuesta CATEGORIA: ', respuesta);
+                }
+            });
         }
     });
  });
