@@ -42,4 +42,30 @@ class ModeloProductos {
             return "ok";
         } else return "error";
     }
+    /**
+     * Undocumented function
+     * @todo EDITAR PRODUCTO (ojo se copio de mdlIngresarProducto)
+     * @param [string] $tabla
+     * @param [array] $datos
+     * @return string
+     */
+    static public function mdlEditarProducto($tabla, $datos) {
+
+        $stmt = Conexion::conectar()->prepare("UPDATE $tabla set id_categoria = :id_categoria, codigo = :codigo,
+             descripcion = :descripcion, imagen = :imagen, stock = :stock, precio_compra = :precio_compra, precio_venta = :precio_venta WHERE codigo = :codigo");
+
+        $stmt->bindParam(":id_categoria", $datos['id_categoria'],PDO::PARAM_INT);
+        $stmt->bindParam(":codigo", $datos['codigo'],PDO::PARAM_INT);
+        $stmt->bindParam(":descripcion", $datos['descripcion'],PDO::PARAM_STR);
+        $stmt->bindParam(":imagen", $datos['imagen'],PDO::PARAM_STR);
+        $stmt->bindParam(":stock", $datos['stock'],PDO::PARAM_INT);
+        $stmt->bindParam(":precio_compra", $datos['PrecioCompra'],PDO::PARAM_STR);
+        $stmt->bindParam(":precio_venta", $datos['PrecioVenta'],PDO::PARAM_STR);
+        
+        if($stmt->execute()) {
+            return "ok";
+        } else return "error";
+    }
+
+
 }

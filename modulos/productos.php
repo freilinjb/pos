@@ -386,6 +386,10 @@ MODAL EDITAR PRODUCTO
           <button type="submit" class="btn btn-primary">Guardar cambios</button>
         </div>
       </form>
+      <?php
+        $editarProducto = new ControladorProductos();
+        $editarProducto->ctrEditarProducto();
+      ?>
     </div>
   </div>
 </div>
