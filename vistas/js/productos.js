@@ -10,7 +10,7 @@
 
 //  });
 
- $('.tablasProductos').DataTable( {
+ $('.tablaProductos').DataTable( {
     "ajax": "ajax/datatable-productos.ajax.php",
     "deferRender": true,
     "retrieve": true,
@@ -171,3 +171,18 @@ $(".nuevaImagen").change(function(){
 
     }
 });
+
+
+/**
+ * @todo EDITAR PRODUCTO
+ */
+
+ /** 
+  * Hay que ponerlo asi para que espere al cargar la tabla completa
+  * Es una forma de que tenga que esperar a que javascript carge todos los 
+  * datos primero
+ */
+ $('.tablaProductos tbody').on('click', 'button.btnEditarProducto', function() {
+    const idProducto = $(this).attr('idProducto');
+    console.log('idProducto: ', idProducto);
+ });
