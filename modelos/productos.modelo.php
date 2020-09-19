@@ -62,10 +62,6 @@ class ModeloProductos {
         $stmt->bindParam(":precio_compra", $datos['PrecioCompra'],PDO::PARAM_STR);
         $stmt->bindParam(":precio_venta", $datos['PrecioVenta'],PDO::PARAM_STR);
         
-        if($stmt->execute()) {
-            return "ok";
-        } else return "error";
+        return ($stmt->execute()) ? "ok" : "error";
     }
-
-
 }
