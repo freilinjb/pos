@@ -55,6 +55,14 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                            $item = null;
+                            $valor = null;
+
+                            $clientes = ControladorCliente::ctrMostrarClientes($item, $valor);
+                            var_dump($clientes);
+                            
+                        ?>
                     </tbody>
                 </table>
             </div>

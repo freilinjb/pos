@@ -59,4 +59,20 @@ class ControladorCliente {
             }
         }
     }
+
+    /**
+     * Mostrar clientes
+     *
+     * @param [int] $item
+     * @param [type] $valor
+     * @return void
+     */
+    static public function ctrMostrarClientes($item, $valor) {
+        
+        $tabla = "clientes";
+
+        $respuesta = ModeloClientes::mdlMostrarClientes($tabla, $item, $valor);
+
+        return $respuesta;
+    }
 }
