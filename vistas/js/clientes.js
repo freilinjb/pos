@@ -3,7 +3,7 @@
 $('.btnEditarCliente').click(function(){
     const idCliente = $(this).attr('idCliente');
     console.log('idCliente: ',idCliente);
-    
+
     const datos = new FormData();
     datos.append("idCliente", idCliente);
 
@@ -15,7 +15,13 @@ $('.btnEditarCliente').click(function(){
         processData: false,
         dataType: 'json',
         success: function(respuesta) {
-            console.log('respuesta: ',  respuesta);
+            $('#idCliente').val(respuesta['id']);
+            $('#editarCliente').val(respuesta['nombre']);
+            $('#editarDocumentoId').val(respuesta['documento']);
+            $('#editarEmail').val(respuesta['email']);
+            $('#editarTelefono').val(respuesta['telefono']);
+            $('#editarDireccion').val(respuesta['direccion']);
+            $('#editarFechaNacimiento').val(respuesta['fecha_nacimiento']);
         }
     });
 });

@@ -206,6 +206,8 @@ MODAL EDITAR CLIENTE
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                 <input type="text" class="form-control input-lg" id="editarCliente" name="editarCliente" required>
+                                <!-- Input oculto para cargar el idCliente y poder saber cual es el que se va a modificar -->
+                                <input type="hidden" id="idCliente" name="idCliente">
                             </div>
                         </div>
                         <!-- ENTRADA PARA EL DOCUMENTO ID -->
@@ -253,6 +255,10 @@ MODAL EDITAR CLIENTE
                     <button type="submit" class="btn btn-primary">Guardar cambios</button>
                 </div>
             </form>
+            <?php 
+                $editarCliente = new ControladorCliente();
+                $editarCliente->ctrEditarCliente();
+            ?>
         </div>
     </div>
 </div>
