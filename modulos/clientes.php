@@ -262,3 +262,7 @@ MODAL EDITAR CLIENTE
         </div>
     </div>
 </div>
+<?php
+    $crearCliente = new ControladorCliente();
+    $crearCliente -> ctrEliminarCliente();
+?>

@@ -67,7 +67,7 @@ class ControladorCliente {
      * @param [type] $valor
      * @return void
      */
-    static public function ctrMostrarClientes($item, $valor) {
+    static public function ctrMostrarClientes($item, $valor):iterable {
         
         $tabla = "clientes";
 
@@ -156,6 +156,36 @@ class ControladorCliente {
 
 			  	</script>';
                 
+            }
+        }
+    }
+
+    static public function ctrEliminarCliente() {
+        if(isset($_GET['idCliente'])) {
+            
+            $tabla = "clientes";
+            $datos = $_GET['idCliente'];
+
+            $respuesta = ModeloClientes::mdlEliminarCliente($tabla, $datos);
+
+            if($respuesta === 'ok') {
+                echo '<script>
+                swal({
+
+                    type: "success",
+                    title: "El cliente ha sido borrada correctamente",
+                    showConfirmButton: true,
+                    confirmButtonText: "Cerrar",
+                    closeOnConfirm: false
+
+                }).then((result) => {
+
+                    if(result.value){
+                        window.location = "clientes";
+                    }
+
+                });
+            </script>';
             }
         }
     }
