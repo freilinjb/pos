@@ -53,21 +53,13 @@
                             <th>Acciones</th>
 
                         </tr>
-
                     </thead>
-
                     <tbody>
-                        
                     </tbody>
-
                 </table>
-
             </div>
-
         </div>
-
     </section>
-
 </div>
 
 <!--=====================================
@@ -139,7 +131,7 @@ MODAL AGREGAR CLIENTE
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                <input type="text" class="form-control input-lg" name="nuevaFechaNacimiento" placeholder="Ingresar fecha nacimiento" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask required>
+                                <input type="text" class="form-control input-lg" name="nuevaFechaNacimiento" placeholder="Ingresar fecha nacimiento" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
                             </div>
                         </div>
                     </div>
@@ -152,6 +144,10 @@ MODAL AGREGAR CLIENTE
                     <button type="submit" class="btn btn-primary">Guardar cliente</button>
                 </div>
             </form>
+            <?php
+                $crearCliente = new ControladorCliente();
+                $crearCliente -> ctrCrearCliente();
+            ?>
         </div>
     </div>
 </div>
