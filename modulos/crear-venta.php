@@ -8,7 +8,7 @@
             <small>Panel de control</small>
 
         </h1>
-        
+
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
             <li class="active">Reportes de ventas</li>
@@ -16,15 +16,18 @@
 
     </section>
 
-    <!-- Main content --> 
+    <!-- Main content -->
     <section class="content">
         <div class="row">
             <!-- EL FORMULARIO -->
             <div class="col-lg-5 col-xs-12">
                 <div class="box box-success">
-                    <div class="box-header with-border"></div>
-                    <div class="box-body">
-                        <form role="form" method="POST">
+                    <div class="box-header with-border">
+
+                    </div>
+                    <form role="form" method="POST">
+
+                        <div class="box-body">
                             <div class="box">
                                 <!-- ENTRADA DEL VENDEDOR -->
                                 <div class="form-group">
@@ -37,14 +40,14 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                                        <input type="text" class="form-control"  id="nuevaVenta" name="nuevaVenta"value="10002343" readonly>
+                                        <input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="10002343" readonly>
                                     </div>
                                 </div>
                                 <!-- ENTRADA DEL CLIENTE -->
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                        
+
                                         <select class="form-control" id="agrergarCliente" name="agrergarCliente">
                                             <option value="">Seleccionar cliente</option>
                                         </select>
@@ -64,41 +67,125 @@
                                             <input type="text" class="form-control" id="agregarProducto" name="agrergarProducto" placeholder="Descripcion del producto" require>
 
                                         </div>
-                                    </div> 
+                                    </div>
                                     <!-- Cantidad del producto -->
                                     <div class="col-xs-3" style="padding-right: 0px;">
-                                        <input type="number" class="form-control" id="nuevaCantidadProducto" 
-                                        name="nuevaCantidadProducto" min="0" placeholder="0" require>
+                                        <input type="number" class="form-control" id="nuevaCantidadProducto" name="nuevaCantidadProducto" min="0" placeholder="0" require>
                                     </div>
 
                                     <!-- Cantidad del producto -->
                                     <div class="col-xs-3">
-                                       <div class="input-group">
-                                            <input type="number" class="form-control" id="nuevoPrecioProducto"
-                                            name="nuevoPrecioProducto" placeholder="000000" readonly require>
-
+                                        <div class="input-group">
                                             <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
-                                       </div>
+
+                                            <input type="number" class="form-control" id="nuevoPrecioProducto" name="nuevoPrecioProducto" placeholder="000000" readonly require>
+                                        </div>
                                     </div>
                                 </div>
-                                
-                                    <!-- BOTON PARA AGRERGAR PRODUCTO -->
-                                    <button type="button" class="btn btn-default hidden-lg">Agrergar producto</button>
-                                    <hr>
 
-                                    <div class="row">
-                                        
+                                <!-- BOTON PARA AGRERGAR PRODUCTO -->
+                                <button type="button" class="btn btn-default hidden-lg">Agrergar producto</button>
+                                <!-- IMPUESTO Y TOTAL -->
+                                <div class="row">
+                                    <div class="col-xs-8 pull-right">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Impuesto</th>
+                                                    <th>Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width: 50%;">
+                                                        <div class="input-group">
+                                                            <input type="number" class="form-control" name="nuevoImpuestoVenta" id="nuevoImpuestoVenta" placeholder="0" require>
+                                                            <span class="input-group-addon"><i class="fa fa-percent"></i></span>
+
+                                                        </div>
+                                                    </td>
+
+                                                    <td style="width: 50%;">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
+                                                            <input type="number" class="form-control" name="nuevoImpuestoVenta" id="nuevoImpuestoVenta" placeholder="00000" readonly| require>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                
+                                </div>
+                                <!-- METODO DE PAGO -->
+
+                                <div class="form-group row">
+                                    <div class="col-xs-6" >
+                                        <div class="form-group">
+                                            <select class="form-control" name="nuevoMetodoPago" id="nuevoMetodoPago" require>
+                                                <option value="">Seleccione método de pago</option>
+                                                <option value="efectivo">Efectivo</option>
+                                                <option value="tarjetaCredito">Tarjeta Crédito</option>
+                                                <option value="tarjetaDebito">Tarjeta Débito</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-6" style="padding-left:0px">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="nuevoCodigoTransaccion" name="nuevoCodigoTransaccion"
+                                            placeholder="Codigo transaccion" require>
+
+                                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+
                             </div>
-                        </form>
+                        </div>
+                    </form>
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary pull-right" data-dismiss="modal">Guardar venta</button>
                     </div>
                 </div>
-            </div> 
+            </div>
 
             <!-- LA TABLA DE PRODUCTOS -->
             <div class="col-lg-7 hidden-md hidden-sm hidden-xs">
-            <div class="box box-warning"></div>
+                <div class="box box-warning">
+                    <div class="box-header with-border">
+
+                    </div>
+                    <div class="box-body">
+                    <table class="table table-bordered table-striped dt-responsive tablas" width="100%">
+                    <thead>
+                        <tr>
+                            <th style="width:10px">#</th>
+                            <th>Imagen</th>
+                            <th>Código</th>
+                            <th>Descripcion</th>
+                            <th>Stock</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" alt="Foto" width="40px"></td>
+                            <td>Lorem, ipsum dolor.</td>
+                            <td>TC - 123154654654</td>
+                            <td>$1,565,55.5</td>
+                            <td>
+                                <div class="btn-group">
+                                    <button class="btn btn-primary">Agregar</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -188,10 +275,9 @@ MODAL AGREGAR CLIENTE
                 </div>
             </form>
             <?php
-                $crearCliente = new ControladorCliente();
-                $crearCliente -> ctrCrearCliente();
+            $crearCliente = new ControladorCliente();
+            $crearCliente->ctrCrearCliente();
             ?>
         </div>
     </div>
 </div>
-
