@@ -60,7 +60,28 @@
                             $valor = null;
 
                             $clientes = ControladorCliente::ctrMostrarClientes($item, $valor);
-                            var_dump($clientes);
+                            
+                            foreach($clientes as $key => $value) {
+
+                                echo '<tr>
+                                        <td>'.($key+1).'</td>
+                                        <td>'.($value['nombre']).'</td>
+                                        <td>'.($value['documento']).'</td>
+                                        <td>'.($value['email']).'</td>
+                                        <td>'.($value['telefono']).'</td>
+                                        <td>'.($value['direccion']).'</td>
+                                        <td>'.($value['fecha_nacimiento']).'</td>
+                                        <td>'.($value['compras']).'</td>
+                                        <td>0000 00 00 000 00 </td>
+                                        <td>'.($value['fecha']).'</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button class="btn btn-warning btnEditarCategoria" idCategoria="'.$value['id'].'" data-toggle="modal" data-target="#modalEditarCategoria"><i class="fa fa-pencil"></i></button>
+                                                <button class="btn btn-danger btnEliminarCategoria" idCategoria="'.$value['id'].'"><i class="fa fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                </tr>';
+                            }
                             
                         ?>
                     </tbody>
