@@ -33,31 +33,14 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                        <input type="text" class="form-control" id="nuevoVendedor" name="nuevoVendedor" value="<?php echo $_SESSION["nombre"];?>" readonly>
-                                        <input type="hidden" value="<?php echo $_SESSION["id"];?>">
+                                        <input type="text" class="form-control" id="nuevoVendedor" name="nuevoVendedor" value="usuarioAdministrador" readonly>
                                     </div>
-
                                 </div>
                                 <!-- ENTRADA DEL VENDEDOR -->
                                 <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                                        <?php 
-                                            $item = null;
-                                            $valor = null;
-
-                                            $ventas = ControladorVentas::ctrMostrarVentas($item, $valor);
-                                            
-                                            if(!$ventas) {
-                                                echo '<input type="text" class="form-control" id="nuevaVenta" 
-                                                    name="nuevaVenta" value="10001" readonly>';
-                                            } else {
-                                                $codigo = $value['codigo']+1;
-                                                
-                                                echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="'.$codigo.'" readonly>';
-                                          
-                                            }
-                                        ?>
+                                        <input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="10002343" readonly>
                                     </div>
                                 </div>
                                 <!-- ENTRADA DEL CLIENTE -->
@@ -67,15 +50,6 @@
 
                                         <select class="form-control" id="agrergarCliente" name="agrergarCliente">
                                             <option value="">Seleccionar cliente</option>
-                                            <?php
-                                                $item = null;
-                                                $valor = null;
-                                                $clientes = ControladorCliente::ctrMostrarClientes($item, $valor);
-
-                                                foreach($clientes as $key => $value) {
-                                                    echo '<option value="'.$value["id"].'">'.$value["nombre"].'</option>';
-                                                }
-                                            ?>
                                         </select>
 
                                         <span class="input-group-addon"><button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalAgregarCliente" data-dismiss="modal">Agregar cliente</button></span>
@@ -134,7 +108,7 @@
                                                     <td style="width: 50%;">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
-                                                            <input type="number" class="form-control" name="nuevoTotalVenta" id="nuevoTotalVenta" placeholder="00000" readonly require>
+                                                            <input type="number" class="form-control" name="nuevoImpuestoVenta" id="nuevoImpuestoVenta" placeholder="00000" readonly| require>
                                                         </div>
                                                     </td>
                                                 </tr>
