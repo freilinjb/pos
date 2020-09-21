@@ -52,6 +52,8 @@ class TablaProductosVentas {
              * que esten agregado a la lista
              */
             $botones = "<div class='btn-group'><button class='btn btn-primary agregarProducto recuperarBoton' idProducto='".$productos[$i]["id"]."'>Agregar</button></div>";
+
+            $imagen = (file_exists($imagen)) ? $imagen : "<img src='vistas/img/productos/default/anonymous.png' width='40px'>";
             #CONSTRULLE EL JSON PARA EL DATATABLE
             $datosJson .= '[
                 "'.($i+1).'",
