@@ -55,7 +55,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="index.php?ruta=crear-ventas">
+                        <a href="index.php?ruta=crear-venta">
                             <i class="fa fa-circle-o"></i>
                             <span>Crear Ventas</span>
                         </a>

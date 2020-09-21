@@ -184,7 +184,7 @@
 
                     </div>
                     <div class="box-body">
-                    <table class="table table-bordered table-striped dt-responsive tablas" width="100%">
+                    <table class="table table-bordered table-striped dt-responsive tablaVentas" width="100%">
                     <thead>
                         <tr>
                             <th style="width:10px">#</th>
@@ -195,20 +195,6 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td><img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" alt="Foto" width="40px"></td>
-                            <td>Lorem, ipsum dolor.</td>
-                            <td>TC - 123154654654</td>
-                            <td>$1,565,55.5</td>
-                            <td>
-                                <div class="btn-group">
-                                    <button class="btn btn-primary">Agregar</button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
                 </table>
                     </div>
                 </div>
