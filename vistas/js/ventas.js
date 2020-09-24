@@ -74,7 +74,7 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function () {
       const descripcion = respuesta["descripcion"];
       const stock = respuesta["stock"];
       const precio = respuesta["precio_venta"];
-
+        console.log('precio: ',stock);
       /**
        * EVITAR AGRERGAR PRODUCTO CUANDO EL STOCK ESTÁ EN CERO
        */
@@ -109,7 +109,7 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function () {
             <div class="col-xs-3" style="padding-right: 0px;">
             <!-- LA VARIABLE STOCK ES PARA SUMAR O RESTAR  -->
 
-                <input type="number" class="form-control" id="nuevaCantidadProducto" name="nuevaCantidadProducto" min="1" value="1" stock="${stock}" require>
+                <input type="number" class="form-control nuevaCantidadProducto" name="nuevaCantidadProducto" min="1" value="1" stock="${stock}" require>
             </div>
 
             <!-- Cantidad del producto -->
@@ -117,7 +117,7 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function () {
                 <div class="input-group">
                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
 
-                    <input type="number" class="form-control" id="nuevoPrecioProducto" name="nuevoPrecioProducto" value="${precio}" readonly require>
+                    <input type="number" class="form-control nuevoPrecioProducto" name="nuevoPrecioProducto" value="${precio}" readonly require>
                 </div>
             </div>
         </div>`);
@@ -210,18 +210,18 @@ $(".btnAgregarProducto").click(function () {
                 </div>
             </div>
             <!-- Cantidad del producto -->
-            <div class="col-xs-3" style="padding-right: 0px;">
+            <div class="col-xs-3 ingresoCantidad" style="padding-right: 0px;">
             <!-- LA VARIABLE STOCK ES PARA SUMAR O RESTAR  -->
 
-                <input type="number" class="form-control" id="nuevaCantidadProducto" name="nuevaCantidadProducto" min="1" value="1" stock require>
+                <input type="number" class="form-control nuevaCantidadProducto" name="nuevaCantidadProducto" min="1" value="1" stock require>
             </div>
 
             <!-- Cantidad del producto -->
-            <div class="col-xs-3">
+            <div class="col-xs-3 ingresoPrecio">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
 
-                    <input type="number" class="form-control" id="nuevoPrecioProducto" name="nuevoPrecioProducto" value readonly require>
+                    <input type="number" class="form-control nuevoPrecioProducto" name="nuevoPrecioProducto" value readonly require>
                 </div>
             </div>
         </div>`);
@@ -242,6 +242,13 @@ $(".btnAgregarProducto").click(function () {
 
  $('.formularioVenta').on("change", "select.nuevaDescripcionProducto", function() {
     const idProducto = $(this).val();
+
+    const nuevoPrecioProducto = $(this).parent().parent().parent().children(".ingresoPrecio").children().children(".nuevoPrecioProducto");
+    const nuevoCantidadProducto = $(this).parent().parent().parent().children(".ingresoCantidad").children(".nuevaCantidadProducto");
+    console.log(nuevoPrecioProducto);
+    console.log(nuevoCantidadProducto);
+
+
     console.log('idProducto:',idProducto);
     const datos = new FormData();
     datos.append("idProducto", idProducto);
@@ -255,8 +262,9 @@ $(".btnAgregarProducto").click(function () {
         processData: false,
         dataType: "json",
         success: function (respuesta) {
+           $(nuevoCantidadProducto).attr('stock', respuesta["stock"]);
+           $(nuevoPrecioProducto).val(respuesta["precio_venta"]);
 
-            console.log('respuesta: ', respuesta);
         }
     });
  });
