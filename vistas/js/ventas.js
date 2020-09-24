@@ -46,3 +46,9 @@
 } );
 
 
+$('.tablaVentas tbody').on('click','button.agregarProducto', function() {
+    const idProducto = $(this).attr('idProducto');
+
+    console.log('idProducto: ',idProducto);
+    // $(this).removeClass('btn-primary agregarProducto');
+});
