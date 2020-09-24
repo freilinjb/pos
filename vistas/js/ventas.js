@@ -195,7 +195,36 @@ $(".btnAgregarProducto").click(function () {
     processData: false,
     dataType: "json",
     success: function (respuesta) {
-        console.log('respuesta: ', respuesta);
+        $(".nuevoProducto").append(` 
+        <div class="row" style="padding:5px 15px">
+            <!-- Descripcion del producto -->
+            <div class="col-xs-6" style="padding-right: 0px;">
+                <div class="input-group">
+
+                    <span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs quitarProducto" idProducto><i class="fa fa-times"></i></button></span>
+
+                    <select class="form-control nuevaDescripcionProducto" idProducto name="nuevaDescripcion" required>
+                        <option>Seleccione el producto</option>
+                    </select>
+
+                </div>
+            </div>
+            <!-- Cantidad del producto -->
+            <div class="col-xs-3" style="padding-right: 0px;">
+            <!-- LA VARIABLE STOCK ES PARA SUMAR O RESTAR  -->
+
+                <input type="number" class="form-control" id="nuevaCantidadProducto" name="nuevaCantidadProducto" min="1" value="1" stock require>
+            </div>
+
+            <!-- Cantidad del producto -->
+            <div class="col-xs-3">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
+
+                    <input type="number" class="form-control" id="nuevoPrecioProducto" name="nuevoPrecioProducto" value readonly require>
+                </div>
+            </div>
+        </div>`);
     }
   });
 });
