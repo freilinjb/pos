@@ -49,6 +49,8 @@
 $('.tablaVentas tbody').on('click','button.agregarProducto', function() {
     const idProducto = $(this).attr('idProducto');
 
-    console.log('idProducto: ',idProducto);
-    // $(this).removeClass('btn-primary agregarProducto');
+    console.log('idProducto:',idProducto);
+    
+    $(this).removeClass('btn-primary agregarProducto');
+    $(this).addClass('btn-default')
 });
