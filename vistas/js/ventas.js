@@ -77,9 +77,9 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function () {
             <div class="col-xs-6" style="padding-right: 0px;">
                 <div class="input-group">
 
-                    <span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs quitarProducto"><i class="fa fa-times"></i></button></span>
+                    <span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs quitarProducto" idProducto="${idProducto}"><i class="fa fa-times"></i></button></span>
 
-                    <input type="text" class="form-control" id="agregarProducto" name="agrergarProducto" value="${descripcion}" require>
+                    <input type="text" class="form-control" id="agregarProducto" name="agrergarProducto" value="${descripcion}" readonly require>
 
                 </div>
             </div>
@@ -106,8 +106,21 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function () {
 //QUITAR PRODUCTOS DE LAS VENTAS Y RECUPERAR EL BOTON
 //Este cargado con las pestañas cargadas
 $(".formularioVenta").on("click", ".quitarProducto", function () {
-    console.log('boton');
-
+    
     $(this).parent().parent().parent().parent().remove();
+
+    const idProducto = $(this).attr("idProducto");
+
+    //ALMACENAR EN EL LOCALSTORAGE EL ID DEL PRODUCTO A QUITAR
+    (localStorage.getItem("quitarProducto") == null) ? idQuitarProducto = [] : idQuitarProducto.concat(localStorage.getItem("quitarProducto"));
+
+    idQuitarProducto.push({"idProducto":idProducto});
+
+    localStorage.setItem("quitarProducto", JSON.stringify(idQuitarProducto));
+ 
+    //Habilita el boton para volver agregar producto
+    $(`button.recuperarBoton[idProducto='${idProducto}']`).removeClass("btn-default");
+
+    $(`button.recuperarBoton[idProducto='${idProducto}']`).addClass("btn-primary");
 
 });
