@@ -176,3 +176,26 @@ $(".formularioVenta").on("click", ".quitarProducto", function () {
     "btn-primary agrergarProducto"
   );
 });
+
+/**
+ * AGRERGANDO PRODUCTO DESDE EL BOTON PARA DISPOSITIVOS
+ */
+
+$(".btnAgregarProducto").click(function () {
+    console.log('hola');
+  const datos = new FormData();
+  datos.append("traerProductos", "ok");
+
+  $.ajax({
+    url: "ajax/productos.ajax.php",
+    method: "POST",
+    data: datos,
+    cache: false,
+    contentType: false,
+    processData: false,
+    dataType: "json",
+    success: function (respuesta) {
+        console.log('respuesta: ', respuesta);
+    }
+  });
+});

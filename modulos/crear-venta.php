@@ -88,7 +88,7 @@
                                 </div>
 
                                 <!-- BOTON PARA AGRERGAR PRODUCTO -->
-                                <button type="button" class="btn btn-default hidden-lg">Agrergar producto</button>
+                                <button type="button" class="btn btn-default hidden-lg btnAgregarProducto">Agrergar producto</button>
                                 <!-- IMPUESTO Y TOTAL -->
                                 <div class="row">
                                     <div class="col-xs-8 pull-right">
