@@ -25,7 +25,7 @@
                     <div class="box-header with-border">
 
                     </div>
-                    <form role="form" method="POST">
+                    <form role="form" method="post" class="formularioVenta">
 
                         <div class="box-body">
                             <div class="box">
