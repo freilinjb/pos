@@ -229,9 +229,34 @@ $(".btnAgregarProducto").click(function () {
         //AGREGAR LOS PRODUCTOS AL SELECT
         respuesta.forEach(function(item, index) {
             $('.nuevaDescripcionProducto').append(
-                `<option value=${item.id}>${item.descripcion}</option>`
+                `<option idProducto=${item.id} value=${item.id}>${item.descripcion}</option>`
             );
         });
     }
   });
 });
+
+/**
+ * SELECCIONAR PRODUCTO
+ */
+
+ $('.formularioVenta').on("change", "select.nuevaDescripcionProducto", function() {
+    const idProducto = $(this).val();
+    console.log('idProducto:',idProducto);
+    const datos = new FormData();
+    datos.append("idProducto", idProducto);
+
+    $.ajax({
+        url: "ajax/productos.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (respuesta) {
+
+            console.log('respuesta: ', respuesta);
+        }
+    });
+ });
