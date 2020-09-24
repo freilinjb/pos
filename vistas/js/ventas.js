@@ -63,9 +63,40 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function () {
     cache: false,
     contentType: false,
     processData: false,
-    dataType:"json",
-    success: function(respuesta) {
-        console.log("respuesta: ", respuesta);
-    }
+    dataType: "json",
+    success: function (respuesta) {
+      console.log("respuesta: ", respuesta);
+
+      const descripcion = respuesta["descripcion"];
+      const stock = respuesta["stock"];
+      const precio = respuesta["precio_venta"];
+
+      $(".nuevoProducto").append(` 
+        <div class="row" style="padding:5px 15px">
+            <!-- Descripcion del producto -->
+            <div class="col-xs-6" style="padding-right: 0px;">
+                <div class="input-group">
+
+                    <span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs"><i class="fa fa-times"></i></button></span>
+
+                    <input type="text" class="form-control" id="agregarProducto" name="agrergarProducto" placeholder="Descripcion del producto" require>
+
+                </div>
+            </div>
+            <!-- Cantidad del producto -->
+            <div class="col-xs-3" style="padding-right: 0px;">
+                <input type="number" class="form-control" id="nuevaCantidadProducto" name="nuevaCantidadProducto" min="0" placeholder="0" require>
+            </div>
+
+            <!-- Cantidad del producto -->
+            <div class="col-xs-3">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
+
+                    <input type="number" class="form-control" id="nuevoPrecioProducto" name="nuevoPrecioProducto" placeholder="000000" readonly require>
+                </div>
+            </div>
+        </div>`);
+    },
   });
 });
