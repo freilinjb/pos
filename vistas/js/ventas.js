@@ -225,6 +225,13 @@ $(".btnAgregarProducto").click(function () {
                 </div>
             </div>
         </div>`);
+
+        //AGREGAR LOS PRODUCTOS AL SELECT
+        respuesta.forEach(function(item, index) {
+            $('.nuevaDescripcionProducto').append(
+                `<option value=${item.id}>${item.descripcion}</option>`
+            );
+        });
     }
   });
 });
