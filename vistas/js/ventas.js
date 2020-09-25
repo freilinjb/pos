@@ -181,8 +181,12 @@ $(".formularioVenta").on("click", ".quitarProducto", function () {
  * AGRERGANDO PRODUCTO DESDE EL BOTON PARA DISPOSITIVOS
  */
 
+ var numProducto = 0;
+
 $(".btnAgregarProducto").click(function () {
-    console.log('hola');
+
+    numProducto ++;
+
   const datos = new FormData();
   datos.append("traerProductos", "ok");
 
@@ -203,7 +207,7 @@ $(".btnAgregarProducto").click(function () {
 
                     <span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs quitarProducto" idProducto><i class="fa fa-times"></i></button></span>
 
-                    <select class="form-control nuevaDescripcionProducto" idProducto name="nuevaDescripcion" required>
+                    <select class="form-control nuevaDescripcionProducto" id="producto${numProducto}" idProducto name="nuevaDescripcion" required>
                         <option>Seleccione el producto</option>
                     </select>
 
@@ -228,9 +232,12 @@ $(".btnAgregarProducto").click(function () {
 
         //AGREGAR LOS PRODUCTOS AL SELECT
         respuesta.forEach(function(item, index) {
-            $('.nuevaDescripcionProducto').append(
-                `<option idProducto=${item.id} value=${item.id}>${item.descripcion}</option>`
-            );
+            if(item.stock != 0) {
+                //Solo cargan los productos que tengan en el stock
+                $(`#producto${numProducto}`).append(
+                    `<option idProducto=${item.id} value=${item.id}>${item.descripcion}</option>`
+                );
+            }
         });
     }
   });
@@ -245,11 +252,7 @@ $(".btnAgregarProducto").click(function () {
 
     const nuevoPrecioProducto = $(this).parent().parent().parent().children(".ingresoPrecio").children().children(".nuevoPrecioProducto");
     const nuevoCantidadProducto = $(this).parent().parent().parent().children(".ingresoCantidad").children(".nuevaCantidadProducto");
-    console.log(nuevoPrecioProducto);
-    console.log(nuevoCantidadProducto);
 
-
-    console.log('idProducto:',idProducto);
     const datos = new FormData();
     datos.append("idProducto", idProducto);
 
