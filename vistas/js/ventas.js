@@ -346,8 +346,8 @@ function sumarTotalPrecio() {
   // }
 
   // const sumarTotalPrecio = arraySumaPrecio.reduce(sumarArrayPrecios);
-  const sumarTotalPrecio2 = arraySumaPrecio.reduce((total, numero) => total + numero);
+  const sumarTotalPrecio = arraySumaPrecio.reduce((total, numero) => total + numero);
 
-  console.log('arraySumaPrecio: ', arraySumaPrecio);
-  console.log('sumarTotalPrecio: ', sumarTotalPrecio2);
+  $("#nuevoTotalVenta").val(sumarTotalPrecio);
+
 }
