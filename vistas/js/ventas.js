@@ -117,7 +117,7 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function () {
                 <div class="input-group">
                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
 
-                    <input type="number" class="form-control nuevoPrecioProducto" name="nuevoPrecioProducto" value="${precio}" readonly require>
+                    <input type="number" class="form-control nuevoPrecioProducto" precioReal=${precio} name="nuevoPrecioProducto" value="${precio}" readonly require>
                 </div>
             </div>
         </div>`);
@@ -225,7 +225,7 @@ $(".btnAgregarProducto").click(function () {
                 <div class="input-group">
                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
 
-                    <input type="number" class="form-control nuevoPrecioProducto" name="nuevoPrecioProducto" value readonly require>
+                    <input type="number" class="form-control nuevoPrecioProducto" precioReal=${precio} name="nuevoPrecioProducto" value readonly require>
                 </div>
             </div>
         </div>`);
@@ -263,10 +263,11 @@ $(".btnAgregarProducto").click(function () {
         cache: false,
         contentType: false,
         processData: false,
-        dataType: "json",
+        dataType: "json", 
         success: function (respuesta) {
            $(nuevoCantidadProducto).attr('stock', respuesta["stock"]);
            $(nuevoPrecioProducto).val(respuesta["precio_venta"]);
+           $(nuevoPrecioProducto).attr("precioReal",respuesta["precio_venta"]);
 
         }
     });
@@ -277,12 +278,22 @@ $(".btnAgregarProducto").click(function () {
   */
 
  $('.formularioVenta').on("change","input.nuevaCantidadProducto", function () {
-   
+   //Busca el precio del input nuevoPrecioProducto
   const precio = $(this).parent().parent().children(".ingresoPrecio").children().children(".nuevoPrecioProducto");
-  console.log('precio: ', precio.val());
 
-   const precioFinal = $(this).val() * precio.val();
+   const precioFinal = $(this).val() * precio.attr("precioReal");
    precio.val(precioFinal);
 
-   console.log('cambio: ',$(this).val());
+   //Pregunta por la cantidad del Stock del producto
+   if(Number($(this).val()) > Number($(this).attr("stock"))) { 
+     $(this).val(1);
+
+      swal({
+        title: "La cantidad supera el Stock",
+        text: `¡Sólo hay ${$(this).attr("stock")} unidades!`,
+        type: "error",
+        confirmButtonText: "¡Cerrar!"
+      })
+   }
+
  });
