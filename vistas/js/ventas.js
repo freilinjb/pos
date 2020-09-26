@@ -145,12 +145,15 @@ $(".tablaVentas").on("draw.dt", function () {
   }
 });
 
-//QUITAR PRODUCTOS DE LAS VENTAS Y RECUPERAR EL BOTON
 //Este cargado con las pestañas cargadas
 var idQuitarProducto = [];
 
 //limpia el localstorage cada vez que recargue la pagina
 localStorage.removeItem("quitarProducto");
+
+/**
+ * QUITAR PRODUCTOS DE LAS VENTAS Y RECUPERAR EL BOTON
+*/
 
 $(".formularioVenta").on("click", ".quitarProducto", function () {
   $(this).parent().parent().parent().parent().remove();
@@ -177,8 +180,16 @@ $(".formularioVenta").on("click", ".quitarProducto", function () {
     "btn-primary agrergarProducto"
   );
 
-  //SUMA TODOS LOS PRECIOS DE
-  sumarTotalPrecio();
+  //Pregunta si en el DOM existen productos en el form
+  if($(".nuevoProducto").children().length == 0) {
+
+    $("#nuevoTotalVenta").val(0);
+
+  } else {
+    //SUMA TODOS LOS PRECIOS DE
+    sumarTotalPrecio();
+  }
+
 });
 
 /**
