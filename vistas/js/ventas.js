@@ -112,8 +112,8 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function () {
                 <input type="number" class="form-control nuevaCantidadProducto" name="nuevaCantidadProducto" min="1" value="1" stock="${stock}" require>
             </div>
 
-            <!-- Cantidad del producto -->
-            <div class="col-xs-3">
+            <!-- Precio del producto -->
+            <div class="col-xs-3 ingresoPrecio">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
 
@@ -270,4 +270,19 @@ $(".btnAgregarProducto").click(function () {
 
         }
     });
+ });
+
+ /**
+  * MODIFICAR LA CANTIDAD
+  */
+
+ $('.formularioVenta').on("change","input.nuevaCantidadProducto", function () {
+   
+  const precio = $(this).parent().parent().children(".ingresoPrecio").children().children(".nuevoPrecioProducto");
+  console.log('precio: ', precio.val());
+
+   const precioFinal = $(this).val() * precio.val();
+   precio.val(precioFinal);
+
+   console.log('cambio: ',$(this).val());
  });
