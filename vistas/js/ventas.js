@@ -69,7 +69,6 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function () {
     processData: false,
     dataType: "json",
     success: function (respuesta) {
-
       const descripcion = respuesta["descripcion"];
       const stock = respuesta["stock"];
       const precio = respuesta["precio_venta"];
@@ -120,8 +119,8 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function () {
                 </div>
             </div>
         </div>`);
-        //SUMA TODOS LOS PRECIOS DE
-        sumarTotalPrecio();
+      //SUMA TODOS LOS PRECIOS DE
+      sumarTotalPrecio();
     },
   });
 });
@@ -153,7 +152,7 @@ localStorage.removeItem("quitarProducto");
 
 /**
  * QUITAR PRODUCTOS DE LAS VENTAS Y RECUPERAR EL BOTON
-*/
+ */
 
 $(".formularioVenta").on("click", ".quitarProducto", function () {
   $(this).parent().parent().parent().parent().remove();
@@ -181,15 +180,14 @@ $(".formularioVenta").on("click", ".quitarProducto", function () {
   );
 
   //Pregunta si en el DOM existen productos en el form
-  if($(".nuevoProducto").children().length == 0) {
-
+  if ($(".nuevoProducto").children().length == 0) {
     $("#nuevoTotalVenta").val(0);
-
+    $("#nuevoImpuestoVenta").val(0);
+    $("#nuevoTotalVenta").attr("total", 0);
   } else {
     //SUMA TODOS LOS PRECIOS DE
     sumarTotalPrecio();
   }
-
 });
 
 /**
@@ -335,7 +333,7 @@ $(".formularioVenta").on("change", "input.nuevaCantidadProducto", function () {
 
   //SUMA TODOS LOS PRECIOS DE
   sumarTotalPrecio();
-
+  
 });
 
 /**
@@ -343,13 +341,13 @@ $(".formularioVenta").on("change", "input.nuevaCantidadProducto", function () {
  */
 
 function sumarTotalPrecio() {
-  const precioItem = $('.nuevoPrecioProducto');
+  agregarImpuesto();
+  const precioItem = $(".nuevoPrecioProducto");
   let arraySumaPrecio = [];
-  
-  const longitud = precioItem.length; 
-  for(let i = 0; i < longitud; i++) {
-    arraySumaPrecio.push(Number($(precioItem[i]).val()));
 
+  const longitud = precioItem.length;
+  for (let i = 0; i < longitud; i++) {
+    arraySumaPrecio.push(Number($(precioItem[i]).val()));
   }
 
   // function sumarArrayPrecios(total, numero) {
@@ -357,8 +355,36 @@ function sumarTotalPrecio() {
   // }
 
   // const sumarTotalPrecio = arraySumaPrecio.reduce(sumarArrayPrecios);
-  const sumarTotalPrecio = arraySumaPrecio.reduce((total, numero) => total + numero);
+  const sumarTotalPrecio = arraySumaPrecio.reduce(
+    (total, numero) => total + numero
+  );
 
   $("#nuevoTotalVenta").val(sumarTotalPrecio);
-
+  $("#nuevoTotalVenta").attr("total", sumarTotalPrecio);
 }
+
+/**
+ * FUNCTION AGRERGAR IMPUESTO
+ */
+
+function agregarImpuesto() {
+  const impuesto = $("#nuevoImpuestoVenta").val();
+  const precioTotal = $("#nuevoTotalVenta").attr("total");
+  console.log('impuesto: ', precioTotal);
+  const precioImpuesto = Number((precioTotal * impuesto) / 100);
+  const totalconImpuesto = Number(precioImpuesto) + Number(precioTotal);
+
+  $("#nuevoTotalVenta").val(totalconImpuesto);
+  $("#nuevoPrecioImpuesto").val(precioImpuesto);
+  $("#nuevoPrecioNeto").val(precioTotal);
+}
+
+/**
+ * CUANDO CAMBIA EL IMPUESTO
+ */
+
+ $("#nuevoImpuestoVenta").change(function () {
+  
+  agregarImpuesto();
+
+ });

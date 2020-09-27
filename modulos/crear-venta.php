@@ -104,6 +104,8 @@
                                                     <td style="width: 50%;">
                                                         <div class="input-group">
                                                             <input type="number" class="form-control input-lg" name="nuevoImpuestoVenta" id="nuevoImpuestoVenta" placeholder="0" require>
+                                                             <input type="hidden" name="nuevoPrecioImpuesto" id="nuevoPrecioImpuesto" require>
+                                                             <input type="hidden" name="nuevoPrecioNeto" id="nuevoPrecioNeto" require>
                                                             <span class="input-group-addon"><i class="fa fa-percent"></i></span>
 
                                                         </div>
@@ -112,7 +114,7 @@
                                                     <td style="width: 50%;">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
-                                                            <input type="number" class="form-control input-lg" name="nuevoTotalVenta" id="nuevoTotalVenta" placeholder="00000" readonly require>
+                                                            <input type="number" class="form-control input-lg" name="nuevoTotalVenta" total=""  id="nuevoTotalVenta" placeholder="00000" readonly require>
                                                         </div>
                                                     </td>
                                                 </tr>
